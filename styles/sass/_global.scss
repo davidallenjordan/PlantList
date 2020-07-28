@@ -1,31 +1,12 @@
-$primary: 'Lobster Two', cursive;
-$secondary: 'MuseoModerno', cursive;
-
 .wrapper {
   max-width: 1200px;
   width: 90%;
   margin: 0 auto;
 }
 
-h1 {
-  font-family: $primary;
+
+body, h1, h2, p, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
 }
-
-nav {
-  display: flex;
-  justify-content: space-between;
-}
-
-
-ul {
-  display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows: 150px 150px 150px 150px 150px;
-  list-style: none;
-
-  li {
-    border: 2px solid palevioletred;
-  }
-}
-
-

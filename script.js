@@ -66,20 +66,46 @@ app.cardFront = (res) => {
 }
 
 // Listen for 'li' click and bring up additional information from API
-// app.cardClick = (res, name, image) => {
-//     $('li').on('click', () => {
-//       app.cardReverse(res, name, image);
-//     })
+app.cardClick = (res, name, image) => {
+    $('li').on('click', () => {
 
-// }
+      const card = $('<div>')
+
+      <div>
+        
+        <div>
+          <img></img>
+        </div>
+        
+        <div class="textContainer">
+          <h2>${name}</h2>
+          <p>botanical name</p>
+          <p>more info</p>
+          <p>soil type</p>
+          <p>country of origin</p>
+        </div>
+
+      </div>
 
 
 
+    })
+    
+  }
+  
+  
+  
+  // app.cardReverse(res, name, image);
 // app.cardReverse = (res, name, image) => {
 
-//   res.forEach((arr) => {
 
-//   })
+
+
+
+//   // res.forEach((arr) => {
+
+
+//   // })
 
 // }
 
