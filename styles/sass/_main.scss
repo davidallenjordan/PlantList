@@ -24,3 +24,43 @@ img {
   display: block;
   object-fit: cover;
 }
+
+// flip card elements
+.flipCardContainer {
+  width: 300px;
+  height: 400px;
+  border: 2px solid black;
+  perspective: 1000px;
+}
+
+
+.flipCard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+}
+
+.flipCardContainer:hover .flipCard {
+  transform: rotateY(180deg);
+}
+
+.flipCardFront,
+.flipCardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flipCardFront {
+  background: blue;
+  color: white;
+}
+
+.flipCardBack {
+  background: darkslategrey;
+  color: white;
+  transform: rotateY(180deg), scale (0.2, 0.2);
+}
