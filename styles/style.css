@@ -235,17 +235,28 @@ html {
   overflow: hidden;
 }
 
+h1 {
+  font-family: "Lobster Two", cursive;
+}
+
+h2 {
+  text-align: center;
+}
+
 .wrapper {
   max-width: 1200px;
   width: 90%;
   margin: 0 auto;
 }
 
-h1 {
-  font-family: "Lobster Two", cursive;
+body, h1, h2, p, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
 }
 
 nav {
+  padding: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -254,16 +265,41 @@ nav {
           justify-content: space-between;
 }
 
+h1 {
+  padding-left: 20px;
+}
+
+form {
+  padding-right: 20px;
+}
+
 ul {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 25% 25% 25% 25%;
-      grid-template-columns: 25% 25% 25% 25%;
-  -ms-grid-rows: 150px 150px 150px 150px 150px;
-      grid-template-rows: 150px 150px 150px 150px 150px;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  -ms-grid-rows: 300px 300px 300px 300px 300px;
+      grid-template-rows: 300px 300px 300px 300px 300px;
   list-style: none;
+  margin: 0 auto;
 }
 
 ul li {
   border: 2px solid palevioletred;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+ul li h2 {
+  height: 10%;
+  border-top: 2px solid palevioletred;
+}
+
+img {
+  width: 100%;
+  height: 90%;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
