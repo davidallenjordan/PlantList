@@ -15,22 +15,18 @@
 
 
 
-const url = 'https://trefle.io/api/v1/plants/'; 
-const otherTHing = 'search';
-const searchItem = 'orchid';
-
 
 const app = {};
-const key = 'V2xFZkxEWTRQcWJaeUJtTGo3Ynl0QT09';
-const apiUrl = 'https://trefle.io/api/v1/plants/';
+
 
 app.init = () => {
   app.getPlants();
 }
 
-app.getPlants = () => {
 
-const query = '';
+app.getPlants = () => {
+  const key = 'V2xFZkxEWTRQcWJaeUJtTGo3Ynl0QT09';
+  const apiUrl = 'https://trefle.io/api/v1/plants/';
 
   $.ajax({
     url: 'http://proxy.hackeryou.com',
@@ -40,24 +36,52 @@ const query = '';
       reqUrl: apiUrl,
       params: {
         token: key,
-        // q: query,
       }
     }
-  }).then(function (res) {
-    console.log(res);
-    app.displayImages(res);
+  }).then(function (result) {
+    const apiResults = result.data;
+    console.log(result);
+    app.cardFront(apiResults);
   })
 }
 
-app.displayImages = (data) => {
-  // const apiResults = data;
+app.cardFront = (res) => {
+  console.log(res);
 
-  app.forEach(function() {
-    // const image = $('<img>').attr('src',data.image_url);
-    const name = $('<h2>').text(data[0].common_name);
-    console.log('hi')
-  })
+  // Iterates through data array and dynamically creates elements for plant cards
+  res.forEach((arr) => {
+    console.log(arr);
+
+    // Main card information
+    const commonName = arr.common_name;
+    
+    const name = $('<h2>').text(commonName);
+    const image = $('<img>').attr('src', arr.image_url).attr('alt', commonName);
+    const card = $('<li>').append(image, name);
+
+    $('ul').append(card);
+  });
+  
+  app.cardClick(res, name, image);
 }
+
+// Listen for 'li' click and bring up additional information from API
+// app.cardClick = (res, name, image) => {
+//     $('li').on('click', () => {
+//       app.cardReverse(res, name, image);
+//     })
+
+// }
+
+
+
+// app.cardReverse = (res, name, image) => {
+
+//   res.forEach((arr) => {
+
+//   })
+
+// }
 
 
 $(document).ready(function(){
