@@ -10,21 +10,57 @@
 // Error handling for spelling of search parameter
 
 
-$.ajax({
-  url: 'http://proxy.hackeryou.com',
-  dataType: 'json',
-  method: 'GET',
-  data: {
-    reqUrl: 'https://trefle.io/api/v1/plants/',
-    params: {
-      token: 'V2xFZkxEWTRQcWJaeUJtTGo3Ynl0QT09',
-    }
-  }
-}).then(function (res) {
-  console.log(res)
-})
+
+
+
+
 
 const url = 'https://trefle.io/api/v1/plants/'; 
 const otherTHing = 'search';
 const searchItem = 'orchid';
+
+
+const app = {};
+const key = 'V2xFZkxEWTRQcWJaeUJtTGo3Ynl0QT09';
+const apiUrl = 'https://trefle.io/api/v1/plants/';
+
+app.init = () => {
+  app.getPlants();
+}
+
+app.getPlants = () => {
+
+const query = '';
+
+  $.ajax({
+    url: 'http://proxy.hackeryou.com',
+    dataType: 'json',
+    method: 'GET',
+    data: {
+      reqUrl: apiUrl,
+      params: {
+        token: key,
+        // q: query,
+      }
+    }
+  }).then(function (res) {
+    console.log(res);
+    app.displayImages(res);
+  })
+}
+
+app.displayImages = (data) => {
+  // const apiResults = data;
+
+  app.forEach(function() {
+    // const image = $('<img>').attr('src',data.image_url);
+    const name = $('<h2>').text(data[0].common_name);
+    console.log('hi')
+  })
+}
+
+
+$(document).ready(function(){
+  app.init();
+})
 
