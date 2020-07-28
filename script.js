@@ -55,43 +55,44 @@ app.cardFront = (res) => {
     // Main card information
     const commonName = arr.common_name;
     
-    const name = $('<h2>').text(commonName);
-    const image = $('<img>').attr('src', arr.image_url).attr('alt', commonName);
+    const name = $('<div>').addClass('nameContainer').append($('<h2>').text(commonName));
+    const image = $('<div>').addClass('imageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
+
     const card = $('<li>').append(image, name);
 
     $('ul').append(card);
   });
   
-  app.cardClick(res, name, image);
+  // app.cardClick(res, name, image);
 }
 
 // Listen for 'li' click and bring up additional information from API
-app.cardClick = (res, name, image) => {
-    $('li').on('click', () => {
+// app.cardClick = (res, name, image) => {
+//     $('li').on('click', () => {
 
-      const card = $('<div>')
+//       const card = $('<div>')
 
-      <div>
+//       <div>
         
-        <div>
-          <img></img>
-        </div>
-        
-        <div class="textContainer">
-          <h2>${name}</h2>
-          <p>botanical name</p>
-          <p>more info</p>
-          <p>soil type</p>
-          <p>country of origin</p>
-        </div>
+//         <div>
+//           <img></img>
+//         </div>
 
-      </div>
+//         <div class="textContainer">
+//           <h2>${name}</h2>
+//           <p>botanical name</p>
+//           <p>more info</p>
+//           <p>soil type</p>
+//           <p>country of origin</p>
+//         </div>
+
+//       </div>
 
 
 
-    })
+//     })
     
-  }
+//   }
   
   
   
