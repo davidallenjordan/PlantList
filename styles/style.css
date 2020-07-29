@@ -221,7 +221,7 @@ html {
           box-sizing: inherit;
 }
 
-.sr-only {
+.srOnly {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -252,6 +252,10 @@ h2 {
   margin: 0 auto;
 }
 
+body {
+  background: #ecf4f3;
+}
+
 body, h1, h2, p, ul {
   margin: 0;
   padding: 0;
@@ -267,9 +271,16 @@ nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: 0;
+          flex-direction: 0;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 h1 {
@@ -278,6 +289,48 @@ h1 {
 
 form {
   padding-right: 20px;
+}
+
+form input {
+  padding: 15px 100px 10px 15px;
+  border: 3px solid #8cb66b;
+  border-radius: 5px 0 0 5px;
+  color: #000;
+}
+
+form input::-webkit-input-placeholder {
+  font-family: "Roboto", sans-serif;
+  color: #8cb66b;
+  font-size: 2rem;
+}
+
+form input:-ms-input-placeholder {
+  font-family: "Roboto", sans-serif;
+  color: #8cb66b;
+  font-size: 2rem;
+}
+
+form input::-ms-input-placeholder {
+  font-family: "Roboto", sans-serif;
+  color: #8cb66b;
+  font-size: 2rem;
+}
+
+form input::placeholder {
+  font-family: "Roboto", sans-serif;
+  color: #8cb66b;
+  font-size: 2rem;
+}
+
+form .searchButton {
+  border: 1px solid #ecf4f3;
+  background: #8cb66b;
+  text-align: center;
+  color: #FFF;
+  border-radius: 0 10px 10px 0;
+  font-size: 2rem;
+  margin: 0;
+  padding: 10px 5px;
 }
 
 ul {
@@ -293,11 +346,16 @@ ul {
 }
 
 ul li {
-  border: 2px solid #78C0E0;
+  border: 5px solid #4b5d67;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 ul li h2 {
-  background: #FFF;
+  background: #ecf4f3;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  text-transform: capi;
 }
 
 img {
@@ -309,7 +367,7 @@ img {
 }
 
 .nameContainer {
-  border-top: 2px solid #78C0E0;
+  border-top: 2px solid #4b5d67;
   height: 20%;
   overflow: hidden;
   padding: 10px;
