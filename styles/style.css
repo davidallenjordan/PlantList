@@ -237,12 +237,13 @@ html {
 
 h1 {
   font-family: "Lobster Two", cursive;
+  color: #8cb66b;
   font-size: 6rem;
 }
 
 h2 {
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.75rem;
 }
 
 .wrapper {
@@ -285,14 +286,18 @@ ul {
   -ms-grid-columns: (1fr)[5];
       grid-template-columns: repeat(5, 1fr);
   gap: 40px;
-  -ms-grid-rows: minmax(0, 1fr) (325px)[5];
-      grid-template-rows: minmax(0, 1fr) repeat(5, 325px);
+  -ms-grid-rows: (350px)[5];
+      grid-template-rows: repeat(5, 350px);
   list-style: none;
   margin: 0 auto;
 }
 
 ul li {
-  border: 2px solid palevioletred;
+  border: 2px solid #78C0E0;
+}
+
+ul li h2 {
+  background: #FFF;
 }
 
 img {
@@ -304,10 +309,10 @@ img {
 }
 
 .nameContainer {
-  border-top: 2px solid palevioletred;
+  border-top: 2px solid #78C0E0;
   height: 20%;
   overflow: hidden;
-  padding: 5px;
+  padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
