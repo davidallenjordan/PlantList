@@ -8,10 +8,15 @@ ul {
   margin: 0 auto;
   
   li {
-    border: 2px solid $secondary;
+    border: 5px solid $quaternary;
+    border-radius: 20px;
+    overflow: hidden;
 
     h2 {
-      background: $white;
+      background: $tertiary;
+      font-family: $base;
+      font-weight: 300;
+      text-transform: capi;
     }
     
   }
@@ -25,7 +30,7 @@ img {
 }
 
 .nameContainer {
-  border-top: 2px solid $secondary;
+  border-top: 2px solid $quaternary;
   height: 20%;
   overflow: hidden;
   padding: 10px;

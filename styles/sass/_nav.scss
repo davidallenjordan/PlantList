@@ -1,8 +1,6 @@
 nav {
   padding: 40px;
-  display: flex;
-  justify-content: space-between;
-
+  @include flex(0, space-between, center);
 }
 
 h1 {
@@ -11,4 +9,29 @@ h1 {
 
 form {
   padding-right: 20px;
+  
+  input {
+    padding: 15px 100px 10px 15px;
+    // width: 100%;
+    border: 3px solid $primary;
+    // border-right: none;
+    border-radius: 5px 0 0 5px;
+    color: $black;
+
+    &::placeholder {
+      font-family: $base;
+      color: $primary;
+      font-size: 2rem;
+    }
+  }
+
+  .searchButton {
+    border: 1px solid $tertiary ;
+    background: $primary;
+    text-align: center;
+    color: $white;
+    border-radius: 0 10px 10px 0;    font-size: 2rem;
+    margin: 0;
+    padding: 10px 5px;
+  }
 }

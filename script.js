@@ -64,7 +64,27 @@ app.cardFront = (res) => {
   });
   
   app.cardClick(res, name, image);
+
 }
+
+//function for search by name bar
+$('form').on('submit', function(event){
+  event.preventDefault();
+  console.log('submitted');
+
+  const userInput = $(name).val();
+  console.log(userInput);
+  // name.filter(searchName => {
+  //   name.container(userInput)
+  // })
+
+  if (userInput === name) {
+    console.log('display info')
+  } else {
+    console.log('sorry, there is an error!')
+  }
+
+})
 
 // Listen for 'li' click and bring up additional information from API
 // app.cardClick = (res, name, image) => {
