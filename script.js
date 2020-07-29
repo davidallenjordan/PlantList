@@ -63,7 +63,7 @@ app.cardFront = (res) => {
     $('ul').append(card);
   });
   
-  // app.cardClick(res, name, image);
+  app.cardClick(res, name, image);
 }
 
 // Listen for 'li' click and bring up additional information from API
