@@ -80,7 +80,9 @@ function getData (name) {
       }
     }
     }).then((result) => {
+      $('ul').empty();
       console.log('it works!', result)
+      app.cardFront(result.data);
     })
 }
 
@@ -93,6 +95,7 @@ $('form').on('submit', function(event){
   //pass userInput into ajax call
   
   getData(userInput);
+  
   //    if (userInput === common_name) {
   //     getData(common_name)
   // } else {
@@ -104,16 +107,13 @@ $('form').on('submit', function(event){
   //function for search by name bar
   
 
-
-
 // Listen for 'li' click and bring up additional information from API
 // app.cardClick = (res, name, image) => {
 //     $('li').on('click', () => {
 
 //       const card = $('<div>')
 
-//       <div>
-        
+//       <div>        
 //         <div>
 //           <img></img>
 //         </div>
@@ -128,26 +128,15 @@ $('form').on('submit', function(event){
 
 //       </div>
 
-
-
 //     })
     
 //   }
-  
-  
-  
+
   // app.cardReverse(res, name, image);
 // app.cardReverse = (res, name, image) => {
 
-
-
-
-
 //   // res.forEach((arr) => {
-
-
 //   // })
-
 // }
 
 
