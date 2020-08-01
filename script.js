@@ -90,24 +90,45 @@ app.cardFront = (res) => {
 
 }
 
-//function for search by name bar
+function getData (name) {
+  $.ajax({
+    method: 'GET',
+    dataType: 'json',
+    url: `http://proxy.hackeryou.com/`, // need help finding this on api
+    data: {
+      reqUrl: `${apiUrl}search`,
+      params: {
+        token: key,
+        q: name,
+      }
+    }
+    }).then((result) => {
+      $('ul').empty();
+      console.log('it works!', result)
+      app.cardFront(result.data);
+    })
+}
+
 $('form').on('submit', function(event){
   event.preventDefault();
   console.log('submitted');
-
-  const userInput = $('input[type="submit"]');
+  const userInput = $('#search').val();
   console.log(userInput);
-  // name.filter(searchName => {
-  //   name.container(userInput)
-  // })
 
-  if (userInput === name) {
-    console.log('display info')
-  } else {
-    console.log('sorry, there is an error!')
-  }
-
+  //pass userInput into ajax call
+  
+  getData(userInput);
+  
+  //    if (userInput === common_name) {
+  //     getData(common_name)
+  // } else {
+  // this else will catch both an empty string and anything that doesn't match common_name
+    // console.error('sorry, something went wrong')
+  // }
 })
+  
+  //function for search by name bar
+  
 
 // Listen for 'li' click and reveal additional information
 app.cardClick = function() {
@@ -123,5 +144,4 @@ app.cardClick = function() {
 
 $(document).ready(function(){
   app.init();
-})
-
+});
