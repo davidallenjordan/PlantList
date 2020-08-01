@@ -100,14 +100,11 @@ app.cardFront = (res) => {
 }
 
 
-
-
-
 function getData (name) {
   $.ajax({
     method: 'GET',
     dataType: 'json',
-    url: `http://proxy.hackeryou.com/`, // need help finding this on api
+    url: `http://proxy.hackeryou.com/`, 
     data: {
       reqUrl: `${apiUrl}search`,
       params: {
