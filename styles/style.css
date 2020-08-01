@@ -256,7 +256,7 @@ body {
   background: #ecf4f3;
 }
 
-body, h1, h2, p, ul {
+body, h1, h2, h3, p, ul {
   margin: 0;
   padding: 0;
   font-weight: normal;
@@ -289,9 +289,11 @@ h1 {
 
 form {
   padding-right: 20px;
+  height: 45.46px;
 }
 
 form input {
+  height: 100%;
   padding: 15px 100px 10px 15px;
   border: 3px solid #8cb66b;
   border-radius: 5px 0 0 5px;
@@ -323,17 +325,18 @@ form input::placeholder {
 }
 
 form .searchButton {
-  border: 1px solid #ecf4f3;
-  background: #8cb66b;
-  text-align: center;
-  color: #FFF;
-  border-radius: 0 10px 10px 0;
-  font-size: 2rem;
+  height: 100%;
   margin: 0;
   padding: 10px 5px;
+  text-align: center;
+  font-size: 2rem;
+  background: #8cb66b;
+  color: #FFF;
+  border: 1px solid #ecf4f3;
+  border-radius: 0 10px 10px 0;
 }
 
-ul {
+.cardFront {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[5];
@@ -345,17 +348,22 @@ ul {
   margin: 0 auto;
 }
 
-ul li {
+.cardFront li {
   border: 5px solid #4b5d67;
   border-radius: 20px;
-  overflow: hidden;
+  position: relative;
 }
 
-ul li h2 {
+.cardFront li h2 {
   background: #ecf4f3;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
-  text-transform: capi;
+  text-transform: capitalize;
+}
+
+.cardFront li img {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 img {
@@ -390,48 +398,42 @@ img {
   height: 80%;
 }
 
-.flipCardContainer {
-  width: 300px;
+.cardBackToggle {
+  visibility: hidden;
+}
+
+.cardBackContainer {
+  width: 500px;
   height: 400px;
-  border: 2px solid black;
-  -webkit-perspective: 1000px;
-          perspective: 1000px;
-}
-
-.flipCard {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-transition: -webkit-transform 1s ease;
-  transition: -webkit-transform 1s ease;
-  transition: transform 1s ease;
-  transition: transform 1s ease, -webkit-transform 1s ease;
-}
-
-.flipCardContainer:hover .flipCard {
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
-}
-
-.flipCardFront,
-.flipCardBack {
+  padding: 20px;
+  background: #ecf4f3;
+  border: 3px solid #4b5d67;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
 }
 
-.flipCardFront {
-  background: blue;
-  color: white;
+.cardBackContainer .backImageContainer {
+  width: 40%;
+  height: auto;
 }
 
-.flipCardBack {
-  background: darkslategrey;
-  color: white;
-  -webkit-transform: rotateY(180deg), scale 0.2, 0.2;
-          transform: rotateY(180deg), scale 0.2, 0.2;
+.cardBackContainer .textContainer {
+  padding: 20px;
+  width: 300px;
+}
+
+.cardBackContainer .textContainer p, .cardBackContainer .textContainer h3 {
+  padding-bottom: 20px;
 }

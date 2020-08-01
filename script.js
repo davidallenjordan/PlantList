@@ -22,7 +22,6 @@ const app = {};
 app.init = () => {
   app.getPlants();
 }
-
 const key = 'V2xFZkxEWTRQcWJaeUJtTGo3Ynl0QT09';
 const apiUrl = 'https://trefle.io/api/v1/plants/';
 
@@ -35,35 +34,59 @@ app.getPlants = () => {
     data: {
       reqUrl: apiUrl,
       params: {
-        token: key,
+        token: key
       }
     }
   }).then(function (result) {
-    const apiResults = result.data;
+    
+    // const apiResults = result.data;
     console.log(result);
-    app.cardFront(apiResults);
+
+    const plantList = [];
+
+    for(let i = 0; i <= 19; i++) {
+      plantList.push(result.data[i]);
+    }
+    console.log(plantList);
+
+    app.cardFront(plantList);
   })
 }
 
+
+
 app.cardFront = (res) => {
-  console.log(res);
 
   // Iterates through data array and dynamically creates elements for plant cards
   res.forEach((arr) => {
     console.log(arr);
-
-    // Main card information
-    const commonName = arr.common_name;
     
+    // Front of card
+    const commonName = arr.common_name;
     const name = $('<div>').addClass('nameContainer').append($('<h2>').text(commonName));
     const image = $('<div>').addClass('imageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
+    
+    
+    // Back of card
+    const imageBack = $('<div>').addClass('backImageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
+    const nameFront = $('<h3>').text(`Common Name: ${commonName}`);
+    const genus = $('<p>').text(`Genus: ${arr.genus}`);
+    const family = $('<p>').text(`Family: ${arr.family} '${arr.family_common_name}'`);
+    const sciName = $('<p>').text(`Scientific Name: ${arr.scientific_name}`);
+    const textBox = $('<div>').addClass('textContainer').append(nameFront, sciName, genus, family);
 
-    const card = $('<li>').append(image, name);
+    
+    
+    const cardBack = $('<div>').addClass('cardBackContainer').addClass('cardBackToggle').append(imageBack, textBox);
+    
+    const card = $('<li>').append(image, name, cardBack);
+    
+    $('.cardFront').append(card);
 
-    $('ul').append(card);
+  
   });
   
-  app.cardClick(res, name, image);
+  app.cardClick(res);
 
 }
 
@@ -107,37 +130,16 @@ $('form').on('submit', function(event){
   //function for search by name bar
   
 
-// Listen for 'li' click and bring up additional information from API
-// app.cardClick = (res, name, image) => {
-//     $('li').on('click', () => {
+// Listen for 'li' click and reveal additional information
+app.cardClick = function() {
+    $('li').on('click', function() {
+      // Find the array # of the card being clicked and display info
 
-//       const card = $('<div>')
+      $(this).children('.cardBackContainer').toggleClass('cardBackToggle');
+      console.log($(this));
 
-//       <div>        
-//         <div>
-//           <img></img>
-//         </div>
-
-//         <div class="textContainer">
-//           <h2>${name}</h2>
-//           <p>botanical name</p>
-//           <p>more info</p>
-//           <p>soil type</p>
-//           <p>country of origin</p>
-//         </div>
-
-//       </div>
-
-//     })
-    
-//   }
-
-  // app.cardReverse(res, name, image);
-// app.cardReverse = (res, name, image) => {
-
-//   // res.forEach((arr) => {
-//   // })
-// }
+    })
+}
 
 
 $(document).ready(function(){
