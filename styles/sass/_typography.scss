@@ -5,6 +5,21 @@ h1 {
 }
 
 h2 {
-  text-align: center;
+  font-family: $base;
   font-size: 2.75rem;
+  font-weight: 300;
+  text-transform: capitalize;
+  text-align: center;
+  color: $black;
+}
+
+h3 {
+  font-family: $base;
+  color: $black;
+}
+
+p {
+  font-family: $base;
+  color: $black;
+
 }

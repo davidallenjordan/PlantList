@@ -242,8 +242,22 @@ h1 {
 }
 
 h2 {
-  text-align: center;
+  font-family: "Roboto", sans-serif;
   font-size: 2.75rem;
+  font-weight: 300;
+  text-transform: capitalize;
+  text-align: center;
+  color: #000;
+}
+
+h3 {
+  font-family: "Roboto", sans-serif;
+  color: #000;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  color: #000;
 }
 
 .wrapper {
@@ -354,18 +368,6 @@ form .searchButton {
   position: relative;
 }
 
-.cardFront li h2 {
-  background: #ecf4f3;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  text-transform: capitalize;
-}
-
-.cardFront li img {
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
 img {
   width: 100%;
   height: 100%;
@@ -374,7 +376,16 @@ img {
      object-fit: cover;
 }
 
-.nameContainer {
+.frontImageContainer {
+  height: 80%;
+}
+
+.frontImageContainer img {
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+
+.frontNameContainer {
   border-top: 2px solid #4b5d67;
   height: 20%;
   overflow: hidden;
@@ -394,15 +405,11 @@ img {
           align-items: 0;
 }
 
-.imageContainer {
-  height: 80%;
+.frontNameContainer h2 {
+  background: #ecf4f3;
 }
 
-.cardBackToggle {
-  visibility: hidden;
-}
-
-.cardBackContainer {
+.overlayContainer {
   width: 500px;
   height: 400px;
   padding: 20px;
@@ -422,18 +429,30 @@ img {
       -ms-flex-align: center;
           align-items: center;
   position: absolute;
+  z-index: 1;
+  top: -30px;
+  right: -150px;
 }
 
-.cardBackContainer .backImageContainer {
-  width: 40%;
-  height: auto;
+.overlayContainer .overlayImageContainer {
+  width: 50%;
+  height: 100%;
 }
 
-.cardBackContainer .textContainer {
+.overlayContainer .overlayTextContainer {
   padding: 20px;
-  width: 300px;
+  width: 50%;
+  height: 100%;
 }
 
-.cardBackContainer .textContainer p, .cardBackContainer .textContainer h3 {
+.overlayContainer .overlayTextContainer p, .overlayContainer .overlayTextContainer h3 {
   padding-bottom: 20px;
+}
+
+span {
+  font-size: 4rem;
+}
+
+.overlayToggle {
+  visibility: hidden;
 }

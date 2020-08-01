@@ -63,21 +63,21 @@ app.cardFront = (res) => {
     
     // Front of card
     const commonName = arr.common_name;
-    const name = $('<div>').addClass('nameContainer').append($('<h2>').text(commonName));
-    const image = $('<div>').addClass('imageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
+    const name = $('<div>').addClass('frontNameContainer').append($('<h2>').text(commonName));
+    const image = $('<div>').addClass('frontImageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
     
     
     // Back of card
-    const imageBack = $('<div>').addClass('backImageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
-    const nameFront = $('<h3>').text(`Common Name: ${commonName}`);
+    const imageBack = $('<div>').addClass('overlayImageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
+    const nameFront = $('<h3>').html(`Common Name: <span>${commonName}</span>`);
     const genus = $('<p>').text(`Genus: ${arr.genus}`);
     const family = $('<p>').text(`Family: ${arr.family} '${arr.family_common_name}'`);
     const sciName = $('<p>').text(`Scientific Name: ${arr.scientific_name}`);
-    const textBox = $('<div>').addClass('textContainer').append(nameFront, sciName, genus, family);
+    const textBox = $('<div>').addClass('overlayTextContainer').append(nameFront, sciName, genus, family);
 
     
     
-    const cardBack = $('<div>').addClass('cardBackContainer').addClass('cardBackToggle').append(imageBack, textBox);
+    const cardBack = $('<div>').addClass('overlayContainer').addClass('overlayToggle').append(imageBack, textBox);
     
     const card = $('<li>').append(image, name, cardBack);
     
@@ -115,27 +115,23 @@ $('form').on('submit', function(event){
   const userInput = $('#search').val();
   console.log(userInput);
 
-  //pass userInput into ajax call
+  // Pass userInput into ajax call
   
   getData(userInput);
   
-  //    if (userInput === common_name) {
-  //     getData(common_name)
-  // } else {
-  // this else will catch both an empty string and anything that doesn't match common_name
-    // console.error('sorry, something went wrong')
-  // }
 })
-  
-  //function for search by name bar
+
+
+  //<------ If no picture available we could put up a default pic "sorry no image available" ------->
+
+  // <-------- Have another click option on the overlay image to open a new window with just the full photo --->
   
 
-// Listen for 'li' click and reveal additional information
+// Listen for 'li' click and reveal additional information for the card that was clicked
 app.cardClick = function() {
     $('li').on('click', function() {
-      // Find the array # of the card being clicked and display info
 
-      $(this).children('.cardBackContainer').toggleClass('cardBackToggle');
+      $(this).children('.overlayContainer').toggleClass('overlayToggle');
       console.log($(this));
 
     })
