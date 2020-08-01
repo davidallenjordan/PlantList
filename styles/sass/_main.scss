@@ -10,83 +10,91 @@
   li {
     border: 5px solid $quaternary;
     border-radius: 20px;
-    // overflow: hidden;
     position: relative;
-
-    h2 {
-      background: $tertiary;
-      font-family: $base;
-      font-weight: 300;
-      text-transform: capitalize;
-    }
-
-    img {
-      object-fit: cover;
-    }
-    
   }
 }
 
+// Global Image Styles
 img {
   width: 100%;
   height: 100%;
-  display: block;
-  object-fit: cover;
   
+  display: block;  
+  object-fit: cover;
 }
 
-.nameContainer {
+// Front Cards Styling --->
+
+.frontImageContainer {
+  height: 80%;      
+  
+  img {
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+  }
+}
+
+.frontNameContainer {
   border-top: 2px solid $quaternary;
   height: 20%;
   overflow: hidden;
   padding: 10px;
   @include flex(column, center, 0);
+  
+  h2 {
+    background: $tertiary;
+  }
 }
 
-.imageContainer {
-  height: 80%;
-}
+// Overlay Styling --->
 
-.cardBackToggle {
-  visibility: hidden;
-}
-
-.cardBackContainer {
+.overlayContainer {
   width: 500px;
   height: 400px;
-
-
   padding: 20px;
+  
   background: $tertiary;
   border: 3px solid $quaternary;
-
+  
   @include flex(row, center, center);
+
   position: absolute;
-
-  .backImageContainer {
-    width: 40%;
-    height: auto;
-
+  z-index: 1;
+  top: -30px;
+  right: -150px;
+  
+  .overlayImageContainer {
+    width: 50%;
+    height: 100%;
   }
   
-  .textContainer {
+  .overlayTextContainer {
     padding: 20px;
-    width: 300px;
-
+    width: 50%;
+    height: 100%;
+    
     p, h3 {
       padding-bottom: 20px;
     }
   }
 }
 
+span {
+  font-size: 4rem;
+}
+
+// Hidden Toggle
+.overlayToggle {
+  visibility: hidden;
+}
 
 
 // Flip card elements
 // .flipCardContainer {
-//   width: 300px;
-//   height: 400px;
-//   border: 2px solid black;
-//   perspective: 1000px;
+  //   width: 300px;
+  //   height: 400px;
+  //   border: 2px solid black;
+  //   perspective: 1000px;
 // }
 
 // .flipCard {
