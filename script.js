@@ -69,10 +69,10 @@ app.cardFront = (res) => {
     
     // Back of card
     const imageBack = $('<div>').addClass('overlayImageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
-    const nameFront = $('<h3>').html(`Common Name: <span>${commonName}</span>`);
-    const genus = $('<p>').text(`Genus: ${arr.genus}`);
-    const family = $('<p>').text(`Family: ${arr.family} '${arr.family_common_name}'`);
-    const sciName = $('<p>').text(`Scientific Name: ${arr.scientific_name}`);
+    const nameFront = $('<h3>').html(`<span>Common Name:</span> ${commonName}`);
+    const genus = $('<p>').html(`<span>Genus:</span> ${arr.genus}`);
+    const family = $('<p>').html(`<span>Family:</span> ${arr.family} '${arr.family_common_name}'`);
+    const sciName = $('<p>').text(`<span>Scientific Name:</span> ${arr.scientific_name}`);
     const textBox = $('<div>').addClass('overlayTextContainer').append(nameFront, sciName, genus, family);
 
     
@@ -82,13 +82,26 @@ app.cardFront = (res) => {
     const card = $('<li>').append(image, name, cardBack);
     
     $('.cardFront').append(card);
-
-  
+    
   });
-  
-  app.cardClick(res);
 
+  // figure out the proper way to wait for images to render before performing action
+  // $('img').on('load', () => {
+  // })
+  
+  // Give the images a chance to render before hiding loading screen
+  setTimeout(() => {
+    app.toggleLoadingScreen();    
+  }, 3000);
+  
+
+  // Add a jquery action to change class and reveal page
+  app.cardClick(res);
 }
+
+
+
+
 
 function getData (name) {
   $.ajax({
@@ -102,23 +115,31 @@ function getData (name) {
         q: name,
       }
     }
-    }).then((result) => {
-      $('ul').empty();
-      console.log('it works!', result)
-      app.cardFront(result.data);
-    })
+
+  }).then((result) => {
+    $('ul').empty();
+    console.log('it works!', result)
+    app.toggleLoadingScreen();
+
+    app.cardFront(result.data);
+  })
 }
+
+app.toggleLoadingScreen = () => {
+  $('.loader').toggleClass('loadingScreen');
+  $('.cardFront').toggleClass('hiddenOnLoad');
+}
+
 
 $('form').on('submit', function(event){
   event.preventDefault();
   console.log('submitted');
   const userInput = $('#search').val();
   console.log(userInput);
-
+  
   // Pass userInput into ajax call
   
   getData(userInput);
-  
 })
 
 
@@ -129,6 +150,7 @@ $('form').on('submit', function(event){
 
 // Listen for 'li' click and reveal additional information for the card that was clicked
 app.cardClick = function() {
+
     $('li').on('click', function() {
 
       $(this).children('.overlayContainer').toggleClass('overlayToggle');
