@@ -18,6 +18,7 @@
   }
 }
 
+// Hides the 'ul' until photos render
 .hiddenOnLoad {
   visibility: hidden;
   position: absolute;
@@ -29,10 +30,6 @@
 
 
 // Grid Styling
-ul {
-  position: relative;
-}
-
 .cardFront {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -44,6 +41,7 @@ ul {
   li {
     border: 5px solid $quaternary;
     border-radius: 20px;
+    position: relative;
   }
 }
 
@@ -82,19 +80,22 @@ img {
 // Overlay Styling --->
 
 .overlayContainer {
-  width: 500px;
-  height: 400px;
+  width: 550px;
+  height: 450px;
   padding: 20px;
   
   background: $tertiary;
   border: 3px solid $quaternary;
   
   @include flex(row, center, center);
-
+  
   position: absolute;
   z-index: 1;
-  top: 0px;
-  right: 0px;
+  top: -50px;
+  right: -175px;
+  
+  
+  
   
   .overlayImageContainer {
     width: 50%;
@@ -102,15 +103,35 @@ img {
   }
   
   .overlayTextContainer {
-    padding: 20px;
-    width: 50%;
     height: 100%;
+    width: 50%;
+    padding: 20px;
+
+    @include flex(column, center, 0);
     
     p, h3 {
-      padding-bottom: 20px;
+      padding-bottom: 30px;
+    }
+
+    p:nth-of-type(3) {
+      padding-bottom: 0;
+    }
+
+    span {
+      padding-bottom: 5px;
     }
   }
 }
+
+// Keeps the overlay positioning inside the 'ul' grid-space
+ul li:nth-child(5n) .overlayContainer {
+  right: -5px;
+}
+
+ul li:nth-child(5n - 4) .overlayContainer {
+  right: -347px;
+}
+
 
 span {
   font-size: 4rem;

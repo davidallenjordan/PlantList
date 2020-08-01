@@ -20,11 +20,19 @@ const app = {};
 
 
 app.init = () => {
+  app.clearSearch()
   app.getPlants();
+
 }
 const key = 'V2xFZkxEWTRQcWJaeUJtTGo3Ynl0QT09';
 const apiUrl = 'https://trefle.io/api/v1/plants/';
 
+// Clears the search bar when the page is refreshed
+app.clearSearch = () => {
+  $('#search').val('');
+}
+
+// Initial API call to populate landing page with plants
 app.getPlants = () => {
 
   $.ajax({
@@ -54,7 +62,7 @@ app.getPlants = () => {
 }
 
 
-
+// Notates through data to append onto the page 'ul'
 app.cardFront = (res) => {
 
   // Iterates through data array and dynamically creates elements for plant cards
@@ -63,6 +71,9 @@ app.cardFront = (res) => {
     
     // Front of card
     const commonName = arr.common_name;
+
+    // if ()
+
     const name = $('<div>').addClass('frontNameContainer').append($('<h2>').text(commonName));
     const image = $('<div>').addClass('frontImageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
     
@@ -72,7 +83,7 @@ app.cardFront = (res) => {
     const nameFront = $('<h3>').html(`<span>Common Name:</span> ${commonName}`);
     const genus = $('<p>').html(`<span>Genus:</span> ${arr.genus}`);
     const family = $('<p>').html(`<span>Family:</span> ${arr.family} '${arr.family_common_name}'`);
-    const sciName = $('<p>').text(`<span>Scientific Name:</span> ${arr.scientific_name}`);
+    const sciName = $('<p>').html(`<span>Scientific Name:</span> ${arr.scientific_name}`);
     const textBox = $('<div>').addClass('overlayTextContainer').append(nameFront, sciName, genus, family);
 
     
@@ -92,7 +103,7 @@ app.cardFront = (res) => {
   // Give the images a chance to render before hiding loading screen
   setTimeout(() => {
     app.toggleLoadingScreen();    
-  }, 3000);
+  }, 2000);
   
 
   // Add a jquery action to change class and reveal page
@@ -102,12 +113,12 @@ app.cardFront = (res) => {
 
 
 
-
+// API call for userinput from search bar
 function getData (name) {
   $.ajax({
     method: 'GET',
     dataType: 'json',
-    url: `http://proxy.hackeryou.com/`, // need help finding this on api
+    url: `http://proxy.hackeryou.com/`,
     data: {
       reqUrl: `${apiUrl}search`,
       params: {
@@ -125,6 +136,7 @@ function getData (name) {
   })
 }
 
+// Brings up loader as images are rendering
 app.toggleLoadingScreen = () => {
   $('.loader').toggleClass('loadingScreen');
   $('.cardFront').toggleClass('hiddenOnLoad');
@@ -133,12 +145,10 @@ app.toggleLoadingScreen = () => {
 
 $('form').on('submit', function(event){
   event.preventDefault();
-  console.log('submitted');
+
   const userInput = $('#search').val();
-  console.log(userInput);
   
   // Pass userInput into ajax call
-  
   getData(userInput);
 })
 
@@ -152,12 +162,19 @@ $('form').on('submit', function(event){
 app.cardClick = function() {
 
     $('li').on('click', function() {
+      $('.overlayContainer').addClass('overlayToggle');
 
       $(this).children('.overlayContainer').toggleClass('overlayToggle');
-      console.log($(this));
-
+      
     })
+
+    // This isn't working yet
+    $('.overlayContainer').on('click', function() {
+      $(this).addClass('overlayToggle');
+    })
+    
 }
+
 
 
 $(document).ready(function(){
