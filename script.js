@@ -135,9 +135,7 @@ app.toggleLoadingScreen = () => {
 
 $('form').on('submit', function(event){
   event.preventDefault();
-  console.log('submitted');
   const userInput = $('#search').val();
-  console.log(userInput);
   
   // Pass userInput into ajax call
 
