@@ -29,12 +29,12 @@
 }
 
 // Main
-body {
-  min-height: 100%;
-}
-main {
-  height: 230vh;
-}
+// body {
+//   min-height: 100%;
+// }
+// main {
+//   height: 230vh;
+// }
 
 // Grid Styling
 .cardFront {
@@ -65,8 +65,8 @@ img {
 
 .frontImageContainer {
   height: 80%;
-  background: url(../assets/errorImage.jpg); 
-  background: red;
+  background: url(assets/errorImage.jpg); 
+  background: green;
 
   img {
     border-top-left-radius: 14px;

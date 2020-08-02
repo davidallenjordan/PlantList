@@ -438,6 +438,8 @@ form .searchButton {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 body {
   min-height: 100%;
 }
@@ -446,6 +448,7 @@ main {
   height: 230vh;
 }
 
+>>>>>>> 492770d9cf4fc8368d7bf3897fe6e38591568d7c
 ul {
   position: relative;
 }
@@ -479,8 +482,8 @@ img {
 
 .frontImageContainer {
   height: 80%;
-  background: url(../assets/errorImage.jpg);
-  background: red;
+  background: url(assets/errorImage.jpg);
+  background: green;
 }
 
 .frontImageContainer img {
