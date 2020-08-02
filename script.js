@@ -76,6 +76,9 @@ app.cardFront = (res) => {
 
     const name = $('<div>').addClass('frontNameContainer').append($('<h2>').text(commonName));
     const image = $('<div>').addClass('frontImageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
+
+    //No image
+    const noImage = $('<div>').addClass('frontImageContainer').append($('<img>').attr('src', './assets/errorImage.png'));
     
     
     // Back of card
@@ -94,7 +97,18 @@ app.cardFront = (res) => {
     
     $('.cardFront').append(card);
     
+    // if (arr.image_url === null) {
+    //   console.log('no image');
+    // };
+
+  //   const imgError = (image) => {
+  //     image.onerror = "";
+  //     image.src = "./assets/errorImage.png";
+  //     return true;
+  // }
+
   });
+  
 
   // figure out the proper way to wait for images to render before performing action
   // $('img').on('load', () => {
@@ -111,14 +125,11 @@ app.cardFront = (res) => {
 }
 
 
-
-
-// API call for userinput from search bar
 function getData (name) {
   $.ajax({
     method: 'GET',
     dataType: 'json',
-    url: `http://proxy.hackeryou.com/`,
+    url: `http://proxy.hackeryou.com/`, 
     data: {
       reqUrl: `${apiUrl}search`,
       params: {
@@ -126,13 +137,20 @@ function getData (name) {
         q: name,
       }
     }
-
+    
   }).then((result) => {
-    $('ul').empty();
+    $('.cardFront').empty();
     console.log('it works!', result)
     app.toggleLoadingScreen();
-
     app.cardFront(result.data);
+    
+    
+    $('.errorMessage').append(errorMessage);
+    if ($('.cardFront').children().length === 0) {
+      console.log('something went wrong');
+      // alert(`oops! We don't have what you're looking for!`)
+      // const errorMessage = $('<h2>').addClass('errorMessage').append(`something went wrong!`);
+    }; 
   })
 }
 
@@ -145,11 +163,12 @@ app.toggleLoadingScreen = () => {
 
 $('form').on('submit', function(event){
   event.preventDefault();
-
   const userInput = $('#search').val();
   
   // Pass userInput into ajax call
+
   getData(userInput);
+
 })
 
 

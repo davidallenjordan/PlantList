@@ -1,0 +1,22 @@
+footer {
+  background: $primary;
+  @include flex(0, space-evenly, center);
+  height: 15rem;
+
+  ul {
+    @include flex(0, space-between, 0);
+    list-style: none;
+  }
+
+}
+
+
+a{
+  font-size: 4rem;
+  padding: 20px 50px;
+  color: $tertiary;
+
+  &:hover {
+    color: $quaternary;
+  }
+}

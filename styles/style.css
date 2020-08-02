@@ -436,14 +436,29 @@ form .searchButton {
           align-items: center;
 }
 
+<<<<<<< HEAD
+=======
+body {
+  min-height: 100%;
+}
+
+main {
+  height: 230vh;
+}
+
+ul {
+  position: relative;
+}
+
+>>>>>>> master
 .cardFront {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[5];
       grid-template-columns: repeat(5, 1fr);
   gap: 40px;
-  -ms-grid-rows: (350px)[5];
-      grid-template-rows: repeat(5, 350px);
+  -ms-grid-rows: (350px)[4];
+      grid-template-rows: repeat(4, 350px);
   list-style: none;
   margin: 0 auto;
 }
@@ -464,6 +479,8 @@ img {
 
 .frontImageContainer {
   height: 80%;
+  background: url(../assets/errorImage.jpg);
+  background: red;
 }
 
 .frontImageContainer img {
@@ -570,4 +587,54 @@ span {
 
 .overlayToggle {
   visibility: hidden;
+}
+
+.errorMessage {
+  width: 500px;
+  height: 100px;
+}
+
+footer {
+  background: #8cb66b;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: 0;
+          flex-direction: 0;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 15rem;
+}
+
+footer ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: 0;
+          flex-direction: 0;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: 0;
+      -ms-flex-align: 0;
+          align-items: 0;
+  list-style: none;
+}
+
+a {
+  font-size: 4rem;
+  padding: 20px 50px;
+  color: #ecf4f3;
+}
+
+a:hover {
+  color: #4b5d67;
 }
