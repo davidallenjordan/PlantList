@@ -66,11 +66,15 @@ img {
 // Front Cards Styling --->
 
 .frontImageContainer {
-  height: 80%;      
-  
+  height: 80%;
+  background: url(../assets/errorImage.jpg); 
+  background: red;
+
   img {
     border-top-left-radius: 14px;
     border-top-right-radius: 14px;
+    // background: red;
+    
   }
 }
 
@@ -133,7 +137,6 @@ span {
   width: 500px;
   height: 100px;
 }
-
 
 // Flip card elements
 // .flipCardContainer {
