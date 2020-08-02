@@ -66,29 +66,29 @@ app.getPlants = () => {
 app.cardFront = (res) => {
 
   // Iterates through data array and dynamically creates elements for plant cards
-  res.forEach((arr) => {
-    console.log(arr);
+  res.forEach((arr) => { 
+
+    const commonName = arr.common_name;
     
     // Front of card
-    const commonName = arr.common_name;
-
-    // if ()
-
     const name = $('<div>').addClass('frontNameContainer').append($('<h2>').text(commonName));
-    const image = $('<div>').addClass('frontImageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
-
-    //No image
-    const noImage = $('<div>').addClass('frontImageContainer').append($('<img>').attr('src', './assets/errorImage.png'));
+    let image = $('<div>').addClass('frontImageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
     
     
     // Back of card
-    const imageBack = $('<div>').addClass('overlayImageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
+    let imageBack = $('<div>').addClass('overlayImageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
     const nameFront = $('<h3>').html(`<span>Common Name:</span> ${commonName}`);
     const genus = $('<p>').html(`<span>Genus:</span> ${arr.genus}`);
     const family = $('<p>').html(`<span>Family:</span> ${arr.family} '${arr.family_common_name}'`);
     const sciName = $('<p>').html(`<span>Scientific Name:</span> ${arr.scientific_name}`);
-    const textBox = $('<div>').addClass('overlayTextContainer').append(nameFront, sciName, genus, family);
+    const closeButton = $('<button title="Close">').append('<i class="fas fa-times"></i>');
+    const textBox = $('<div>').addClass('overlayTextContainer').append(closeButton, nameFront, sciName, genus, family);
 
+    // No image available error handling
+    if (!arr.image_url) {
+      image = $('<div>').addClass('frontImageContainer').append($('<img>').attr('src', 'assets/errorImage.png').attr('alt', commonName));
+      imageBack = $('<div>').addClass('overlayImageContainer').append($('<img>').attr('src', 'assets/errorImage.png').attr('alt', commonName));
+    }
     
     
     const cardBack = $('<div>').addClass('overlayContainer').addClass('overlayToggle').append(imageBack, textBox);
@@ -97,21 +97,11 @@ app.cardFront = (res) => {
     
     $('.cardFront').append(card);
     
-    // if (arr.image_url === null) {
-    //   console.log('no image');
-    // };
-
-  //   const imgError = (image) => {
-  //     image.onerror = "";
-  //     image.src = "./assets/errorImage.png";
-  //     return true;
-  // }
-
   });
   
-
+  
   // figure out the proper way to wait for images to render before performing action
-  // $('img').on('load', () => {
+  // $('img').on('load', () => {    <---- HELP CUE
   // })
   
   // Give the images a chance to render before hiding loading screen
@@ -119,11 +109,25 @@ app.cardFront = (res) => {
     app.toggleLoadingScreen();    
   }, 2000);
   
-
+  
   // Add a jquery action to change class and reveal page
-  app.cardClick(res);
+  app.cardClick();
 }
 
+
+// <-------- Have another click option on the overlay image to open a new window with just the full photo --->
+
+
+// Listen for 'li' click and reveal additional information for the card that was clicked
+app.cardClick = function() {
+
+  $('.cardFront li').on('click', function() {
+    $('.overlayContainer').addClass('overlayToggle');
+
+    $(this).children('.overlayContainer').hide();
+  }) 
+}
+  
 
 function getData (name) {
   $.ajax({
@@ -144,12 +148,9 @@ function getData (name) {
     app.toggleLoadingScreen();
     app.cardFront(result.data);
     
-    
-    $('.errorMessage').append(errorMessage);
+    // Error message if search fails
     if ($('.cardFront').children().length === 0) {
-      console.log('something went wrong');
-      // alert(`oops! We don't have what you're looking for!`)
-      // const errorMessage = $('<h2>').addClass('errorMessage').append(`something went wrong!`);
+      alert(`oops! We don't have what you're looking for!`)
     }; 
   })
 }
@@ -171,28 +172,8 @@ $('form').on('submit', function(event){
 
 })
 
-
-  //<------ If no picture available we could put up a default pic "sorry no image available" ------->
-
-  // <-------- Have another click option on the overlay image to open a new window with just the full photo --->
   
 
-// Listen for 'li' click and reveal additional information for the card that was clicked
-app.cardClick = function() {
-
-    $('li').on('click', function() {
-      $('.overlayContainer').addClass('overlayToggle');
-
-      $(this).children('.overlayContainer').toggleClass('overlayToggle');
-      
-    })
-
-    // This isn't working yet
-    $('.overlayContainer').on('click', function() {
-      $(this).addClass('overlayToggle');
-    })
-    
-}
 
 
 

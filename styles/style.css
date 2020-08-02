@@ -436,21 +436,6 @@ form .searchButton {
           align-items: center;
 }
 
-<<<<<<< HEAD
-=======
-body {
-  min-height: 100%;
-}
-
-main {
-  height: 230vh;
-}
-
-ul {
-  position: relative;
-}
-
->>>>>>> master
 .cardFront {
   display: -ms-grid;
   display: grid;
@@ -479,8 +464,6 @@ img {
 
 .frontImageContainer {
   height: 80%;
-  background: url(../assets/errorImage.jpg);
-  background: red;
 }
 
 .frontImageContainer img {
@@ -518,6 +501,7 @@ img {
   padding: 20px;
   background: #ecf4f3;
   border: 3px solid #4b5d67;
+  border-radius: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -595,6 +579,8 @@ span {
 }
 
 footer {
+  margin-top: 50px;
+  padding: 20px 0;
   background: #8cb66b;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -609,7 +595,6 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 15rem;
 }
 
 footer ul {
@@ -629,9 +614,14 @@ footer ul {
   list-style: none;
 }
 
+footer .names {
+  font-size: 3rem;
+  color: #FFF;
+}
+
 a {
-  font-size: 4rem;
   padding: 20px 50px;
+  font-size: 4rem;
   color: #ecf4f3;
 }
 
