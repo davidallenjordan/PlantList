@@ -145,10 +145,10 @@ function getData (name) {
     app.cardFront(result.data);
     
     
-    $('.errorMessage').append(errorMessage);
+    // $('.errorMessage').append(errorMessage);
     if ($('.cardFront').children().length === 0) {
-      console.log('something went wrong');
-      // alert(`oops! We don't have what you're looking for!`)
+      console.log(`something went wrong`);
+      alert(`oops! We don't have what you're looking for!`)
       // const errorMessage = $('<h2>').addClass('errorMessage').append(`something went wrong!`);
     }; 
   })

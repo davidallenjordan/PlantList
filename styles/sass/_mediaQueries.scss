@@ -1,2 +1,8 @@
 
 // Lets have the grid columns change as the screen gets smaller so instead of our boxes squishing they # of columns is reduced. We can also re-size the boxes as we see fit.
+
+@media (max-width: 380px) {
+  // body {
+  //   overflow-x: hidden;
+  // }
+}

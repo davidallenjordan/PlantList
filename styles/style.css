@@ -285,6 +285,7 @@ p span {
 
 body {
   background: #ecf4f3;
+  overflow-x: hidden;
 }
 
 body, h1, h2, h3, p, ul {
@@ -312,6 +313,8 @@ nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 h1 {
@@ -436,29 +439,11 @@ form .searchButton {
           align-items: center;
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-body {
-  min-height: 100%;
-}
-
-main {
-  height: 230vh;
-}
-
->>>>>>> 492770d9cf4fc8368d7bf3897fe6e38591568d7c
-ul {
-  position: relative;
-}
-
->>>>>>> master
 .cardFront {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[5];
-      grid-template-columns: repeat(5, 1fr);
+  -ms-grid-columns: (minmax(200px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 40px;
   -ms-grid-rows: (350px)[4];
       grid-template-rows: repeat(4, 350px);
@@ -612,7 +597,10 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   height: 15rem;
+  margin-top: 50px;
 }
 
 footer ul {
