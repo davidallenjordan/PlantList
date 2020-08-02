@@ -114,11 +114,16 @@ function getData (name) {
     }
 
   }).then((result) => {
-    $('ul').empty();
+    $('.cardFront').empty();
     console.log('it works!', result)
     app.toggleLoadingScreen();
-
     app.cardFront(result.data);
+
+    if ($('.cardFront').children().length === 0) {
+      console.log('something went wrong');
+      alert(`oops! We don't have what you're looking for!`)
+      // const errorMessage = $('<h2>').addClass('errorMessage').append(`something went wrong!`);
+    }; 
   })
 }
 
@@ -130,13 +135,12 @@ app.toggleLoadingScreen = () => {
 
 $('form').on('submit', function(event){
   event.preventDefault();
-  console.log('submitted');
   const userInput = $('#search').val();
-  console.log(userInput);
   
   // Pass userInput into ajax call
-  
+
   getData(userInput);
+
 })
 
 

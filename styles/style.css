@@ -522,6 +522,11 @@ span {
   visibility: hidden;
 }
 
+.errorMessage {
+  width: 500px;
+  height: 100px;
+}
+
 footer {
   background: #8cb66b;
   display: -webkit-box;
@@ -540,7 +545,7 @@ footer {
   height: 15rem;
 }
 
-ul {
+footer ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
