@@ -445,8 +445,8 @@ form .searchButton {
   -ms-grid-columns: (minmax(200px, 1fr))[auto-fill];
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 40px;
-  -ms-grid-rows: (350px)[4];
-      grid-template-rows: repeat(4, 350px);
+  -ms-grid-rows: (minmax(350px, 350px))[auto-fill];
+      grid-template-rows: repeat(auto-fill, minmax(350px, 350px));
   list-style: none;
   margin: 0 auto;
 }
@@ -467,8 +467,6 @@ img {
 
 .frontImageContainer {
   height: 80%;
-  background: url(assets/errorImage.jpg);
-  background: green;
 }
 
 .frontImageContainer img {
@@ -506,6 +504,7 @@ img {
   padding: 20px;
   background: #ecf4f3;
   border: 3px solid #4b5d67;
+  border-radius: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -583,6 +582,8 @@ span {
 }
 
 footer {
+  margin-top: 50px;
+  padding: 20px 0;
   background: #8cb66b;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -620,9 +621,14 @@ footer ul {
   list-style: none;
 }
 
+footer .names {
+  font-size: 3rem;
+  color: #FFF;
+}
+
 a {
-  font-size: 4rem;
   padding: 20px 50px;
+  font-size: 4rem;
   color: #ecf4f3;
 }
 

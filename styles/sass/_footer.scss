@@ -1,5 +1,8 @@
 footer {
+  margin-top: 50px;
+  padding: 20px 0;
   background: $primary;
+  
   @include flex(0, space-evenly, center);
   flex-wrap: wrap;
   height: 15rem;
@@ -10,12 +13,16 @@ footer {
     list-style: none;
   }
 
+  .names {
+    font-size: 3rem;
+    color: $white;
+  }
 }
 
 
 a{
-  font-size: 4rem;
   padding: 20px 50px;
+  font-size: 4rem;
   color: $tertiary;
 
   &:hover {
