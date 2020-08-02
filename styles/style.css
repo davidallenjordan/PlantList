@@ -404,14 +404,6 @@ form .searchButton {
           align-items: center;
 }
 
-body {
-  min-height: 100%;
-}
-
-main {
-  height: 230vh;
-}
-
 ul {
   position: relative;
 }
@@ -443,8 +435,8 @@ img {
 
 .frontImageContainer {
   height: 80%;
-  background: url(../assets/errorImage.jpg);
-  background: red;
+  background: url(assets/errorImage.jpg);
+  background: green;
 }
 
 .frontImageContainer img {
