@@ -1,7 +1,9 @@
 footer {
   background: $primary;
   @include flex(0, space-evenly, center);
+  flex-wrap: wrap;
   height: 15rem;
+  margin-top: 50px;
 
   ul {
     @include flex(0, space-between, 0);

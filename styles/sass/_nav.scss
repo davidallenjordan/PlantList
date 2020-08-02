@@ -1,6 +1,7 @@
 nav {
   padding: 40px;
   @include flex(0, space-between, center);
+  flex-wrap: wrap;
 }
 
 h1 {
