@@ -5,21 +5,42 @@ h1 {
 }
 
 h2 {
-  font-family: $base;
   font-size: 2.75rem;
   font-weight: 300;
-  text-transform: capitalize;
   text-align: center;
+}
+
+h2,
+p,
+h3 {
+  text-transform: capitalize;
   color: $black;
+  font-family: $base;
+}
+
+
+p {
+  font-size: 2rem;
+}
+
+h3 span {
+  font-size: 2.9rem;
 }
 
 h3 {
-  font-family: $base;
-  color: $black;
+  font-size: 2.5rem;
 }
 
-p {
-  font-family: $base;
-  color: $black;
-
+h3 span,
+p span {
+  display: block;
+  color: rgb(19, 118, 19);
 }
+
+p span {
+  font-size: 2.5rem;
+}
+
+
+
+

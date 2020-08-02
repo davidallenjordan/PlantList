@@ -242,22 +242,39 @@ h1 {
 }
 
 h2 {
-  font-family: "Roboto", sans-serif;
   font-size: 2.75rem;
   font-weight: 300;
-  text-transform: capitalize;
   text-align: center;
-  color: #000;
 }
 
+h2,
+p,
 h3 {
-  font-family: "Roboto", sans-serif;
+  text-transform: capitalize;
   color: #000;
+  font-family: "Roboto", sans-serif;
 }
 
 p {
-  font-family: "Roboto", sans-serif;
-  color: #000;
+  font-size: 2rem;
+}
+
+h3 span {
+  font-size: 2.9rem;
+}
+
+h3 {
+  font-size: 2.5rem;
+}
+
+h3 span,
+p span {
+  display: block;
+  color: #137613;
+}
+
+p span {
+  font-size: 2.5rem;
 }
 
 .wrapper {
@@ -302,13 +319,28 @@ h1 {
 }
 
 form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: 0;
+      -ms-flex-pack: 0;
+          justify-content: 0;
+  -webkit-box-align: 0;
+      -ms-flex-align: 0;
+          align-items: 0;
   padding-right: 20px;
-  height: 45.46px;
+  height: 50px;
 }
 
 form input {
+  display: block;
   height: 100%;
-  padding: 15px 100px 10px 15px;
+  padding: 15px 20px 15px 15px;
+  font-size: 2rem;
   border: 3px solid #8cb66b;
   border-radius: 5px 0 0 5px;
   color: #000;
@@ -346,7 +378,7 @@ form .searchButton {
   font-size: 2rem;
   background: #8cb66b;
   color: #FFF;
-  border: 1px solid #ecf4f3;
+  border: none;
   border-radius: 0 10px 10px 0;
 }
 
@@ -404,6 +436,8 @@ form .searchButton {
           align-items: center;
 }
 
+<<<<<<< HEAD
+=======
 body {
   min-height: 100%;
 }
@@ -416,6 +450,7 @@ ul {
   position: relative;
 }
 
+>>>>>>> master
 .cardFront {
   display: -ms-grid;
   display: grid;
@@ -431,6 +466,7 @@ ul {
 .cardFront li {
   border: 5px solid #4b5d67;
   border-radius: 20px;
+  position: relative;
 }
 
 img {
@@ -477,8 +513,8 @@ img {
 }
 
 .overlayContainer {
-  width: 500px;
-  height: 400px;
+  width: 550px;
+  height: 450px;
   padding: 20px;
   background: #ecf4f3;
   border: 3px solid #4b5d67;
@@ -497,8 +533,8 @@ img {
           align-items: center;
   position: absolute;
   z-index: 1;
-  top: 0px;
-  right: 0px;
+  top: -50px;
+  right: -175px;
 }
 
 .overlayContainer .overlayImageContainer {
@@ -507,13 +543,42 @@ img {
 }
 
 .overlayContainer .overlayTextContainer {
-  padding: 20px;
-  width: 50%;
   height: 100%;
+  width: 50%;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: 0;
+      -ms-flex-align: 0;
+          align-items: 0;
 }
 
 .overlayContainer .overlayTextContainer p, .overlayContainer .overlayTextContainer h3 {
-  padding-bottom: 20px;
+  padding-bottom: 30px;
+}
+
+.overlayContainer .overlayTextContainer p:nth-of-type(3) {
+  padding-bottom: 0;
+}
+
+.overlayContainer .overlayTextContainer span {
+  padding-bottom: 5px;
+}
+
+ul li:nth-child(5n) .overlayContainer {
+  right: -5px;
+}
+
+ul li:nth-child(5n - 4) .overlayContainer {
+  right: -347px;
 }
 
 span {
