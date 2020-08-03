@@ -28,20 +28,12 @@
   @include flex(row, center, center);
 }
 
-// Main
-// body {
-//   min-height: 100%;
-// }
-// main {
-//   height: 230vh;
-// }
-
 // Grid Styling
 .cardFront {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: 400px;
   gap: 40px;
-  grid-template-rows: repeat(auto-fill, minmax(350px, 350px));
   list-style: none;
   margin: 0 auto;
   
@@ -140,14 +132,13 @@ ul li:nth-child(5n - 4) .overlayContainer {
   right: -347px;
 }
 
-
 span {
   font-size: 4rem;
 }
 
-// Hidden Toggle
-.overlayToggle {
-  visibility: hidden;
+// Hidden class for Overlay
+.hide {
+  display: none;
 }
 
 //Error message

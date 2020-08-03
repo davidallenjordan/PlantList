@@ -90,44 +90,40 @@ app.cardFront = (res) => {
       imageBack = $('<div>').addClass('overlayImageContainer').append($('<img>').attr('src', 'assets/errorImage.png').attr('alt', commonName));
     }
     
+    // Overlay Card Package
+    const cardBack = $('<div>').addClass('overlayContainer').addClass('hide').append(imageBack, textBox);
     
-    const cardBack = $('<div>').addClass('overlayContainer').addClass('overlayToggle').append(imageBack, textBox);
-    
+    // Front Card Package with Overlay Package as a hidden child
     const card = $('<li>').append(image, name, cardBack);
     
     $('.cardFront').append(card);
     
   });
-  
-  
-  // figure out the proper way to wait for images to render before performing action
-  // $('img').on('load', () => {    <---- HELP CUE
-  // })
-  
+    
   // Give the images a chance to render before hiding loading screen
   setTimeout(() => {
     app.toggleLoadingScreen();    
   }, 2000);
   
-  
   // Add a jquery action to change class and reveal page
-  app.cardClick();
+  app.overlayToggle();
 }
 
-
-// <-------- Have another click option on the overlay image to open a new window with just the full photo --->
 
 
 // Listen for 'li' click and reveal additional information for the card that was clicked
-app.cardClick = function() {
+app.overlayToggle = function() {
 
-  $('.cardFront li').on('click', function() {
-    $('.overlayContainer').addClass('overlayToggle');
-
-    $(this).children('.overlayContainer').hide();
+  $('.cardFront').on('click', 'li', function() {
+    // $('.overlayContainer').addClass('hide');
+    $(this).children('.overlayContainer').toggleClass('hide');
   }) 
+
+  // Why does this not work wtf
+  // $('.cardFront').on('click', 'button', function() {
+  //   $('.overlayContainer').addClass('hide');
+  // })
 }
-  
 
 function getData (name) {
   $.ajax({
@@ -172,7 +168,6 @@ $('form').on('submit', function(event){
 
 })
 
-  
 
 
 
