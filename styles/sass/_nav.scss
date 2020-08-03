@@ -2,11 +2,26 @@ nav {
   padding: 40px;
   @include flex(0, space-between, center);
   flex-wrap: wrap;
+
+  p {
+    padding-right: 20px;
+    color: $error;
+  }
+}
+
+// Error Message Styles
+.errorToggle {
+  display: none;
+}
+
+.errorMessage {
+  align-self: center;
 }
 
 h1 {
   padding-left: 20px;
 }
+
 
 form {
   @include flex(row, 0, 0);

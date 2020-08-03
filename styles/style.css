@@ -249,17 +249,24 @@ h2 {
 
 h2,
 p,
-h3 {
+h3,
+.names {
   text-transform: capitalize;
-  color: #000;
   font-family: "Roboto", sans-serif;
+}
+
+h2,
+p,
+h3 {
+  color: #000;
 }
 
 p {
   font-size: 2rem;
 }
 
-h3 span {
+h3 span,
+.names {
   font-size: 2.9rem;
 }
 
@@ -275,6 +282,10 @@ p span {
 
 p span {
   font-size: 2.5rem;
+}
+
+.names {
+  color: #FFF;
 }
 
 .wrapper {
@@ -315,6 +326,21 @@ nav {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+nav p {
+  padding-right: 20px;
+  color: #a05555;
+}
+
+.errorToggle {
+  display: none;
+}
+
+.errorMessage {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 h1 {
@@ -575,12 +601,6 @@ span {
   display: none;
 }
 
-.errorMessage {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-}
-
 footer {
   margin-top: 50px;
   padding: 20px 0;
@@ -600,7 +620,6 @@ footer {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  height: 15rem;
   margin-top: 50px;
 }
 
@@ -619,11 +638,12 @@ footer ul {
       -ms-flex-align: 0;
           align-items: 0;
   list-style: none;
+  -ms-flex-item-align: center;
+      align-self: center;
 }
 
 footer .names {
-  font-size: 3rem;
-  color: #FFF;
+  padding-top: 5px;
 }
 
 a {

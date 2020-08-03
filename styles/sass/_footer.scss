@@ -5,17 +5,16 @@ footer {
   
   @include flex(0, space-evenly, center);
   flex-wrap: wrap;
-  height: 15rem;
   margin-top: 50px;
 
   ul {
     @include flex(0, space-between, 0);
     list-style: none;
+    align-self: center;
   }
 
   .names {
-    font-size: 3rem;
-    color: $white;
+    padding-top: 5px;
   }
 }
 
