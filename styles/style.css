@@ -444,9 +444,8 @@ form .searchButton {
   display: grid;
   -ms-grid-columns: (minmax(200px, 1fr))[auto-fill];
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: 400px;
   gap: 40px;
-  -ms-grid-rows: (minmax(350px, 350px))[auto-fill];
-      grid-template-rows: repeat(auto-fill, minmax(350px, 350px));
   list-style: none;
   margin: 0 auto;
 }
@@ -572,8 +571,8 @@ span {
   font-size: 4rem;
 }
 
-.overlayToggle {
-  visibility: hidden;
+.hide {
+  display: none;
 }
 
 .errorMessage {
