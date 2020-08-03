@@ -42,6 +42,16 @@
     border-radius: 20px;
     position: relative;
   }
+  img {
+    opacity: 0.8;
+    transition: all 0.5s ease;
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+      transition: 0.5s ease;
+    }
+  }
 }
 
 
@@ -91,7 +101,7 @@ img {
   @include flex(row, center, center);
   
   position: absolute;
-  z-index: 1;
+  z-index: 10;
   top: -50px;
   right: -175px;
   
@@ -101,6 +111,10 @@ img {
   .overlayImageContainer {
     width: 50%;
     height: 100%;
+
+    img {
+      opacity: 1;
+    }
   }
   
   .overlayTextContainer {

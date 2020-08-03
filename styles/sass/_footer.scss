@@ -20,13 +20,20 @@ footer {
   }
 }
 
-
 a{
   padding: 20px 50px;
   font-size: 4rem;
   color: $tertiary;
+}
 
-  &:hover {
-    color: $quaternary;
-  }
+.github:hover {
+  color: #D64C31;
+}
+
+.twitter:hover {
+  color: #1dcaff;
+}
+
+.linkedin:hover {
+  color: #0072b1;
 }
