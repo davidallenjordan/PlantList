@@ -576,11 +576,11 @@ img {
 }
 
 ul li:nth-child(5n) .overlayContainer {
-  right: -5px;
+  right: 10%;
 }
 
 ul li:nth-child(5n - 4) .overlayContainer {
-  right: -347px;
+  left: 10%;
 }
 
 span {
@@ -666,10 +666,10 @@ a {
     border: 3px solid yellow;
   }
   ul li:nth-child(4n) .overlayContainer {
-    right: -5px;
+    right: 10%;
   }
   ul li:nth-child(4n - 3) .overlayContainer {
-    right: -347px;
+    left: 10%;
   }
 }
 
@@ -678,10 +678,10 @@ a {
     border: 3px solid orangered;
   }
   ul li:nth-child(3n) .overlayContainer {
-    right: -5px;
+    right: 10%;
   }
   ul li:nth-child(3n - 2) .overlayContainer {
-    right: -347px;
+    left: 10%;
   }
 }
 
@@ -690,10 +690,10 @@ a {
     border: 5px solid blue;
   }
   ul li:nth-child(2n) .overlayContainer {
-    right: 10px;
+    right: 10%;
   }
   ul li:first-child .overlayContainer {
-    right: -255px;
+    left: 10%;
   }
   .overlayContainer {
     border: 3px solid red;
