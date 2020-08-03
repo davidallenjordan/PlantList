@@ -577,8 +577,9 @@ span {
 }
 
 .errorMessage {
-  width: 500px;
-  height: 100px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 footer {
