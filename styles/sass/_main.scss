@@ -28,7 +28,7 @@
   @include flex(row, center, center);
 }
 
-//Main
+// Main
 // body {
 //   min-height: 100%;
 // }
@@ -65,14 +65,10 @@ img {
 
 .frontImageContainer {
   height: 80%;
-  background: url(assets/errorImage.jpg); 
-  background: green;
 
   img {
     border-top-left-radius: 14px;
-    border-top-right-radius: 14px;
-    // background: red;
-    
+    border-top-right-radius: 14px;    
   }
 }
 
@@ -97,6 +93,7 @@ img {
   
   background: $tertiary;
   border: 3px solid $quaternary;
+  border-radius: 20px;
   
   @include flex(row, center, center);
   
