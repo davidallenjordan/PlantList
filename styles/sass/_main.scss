@@ -140,11 +140,11 @@ img {
 
 // Keeps the overlay positioning inside the 'ul' grid-space
 ul li:nth-child(5n) .overlayContainer {
-  right: -5px;
+  right: 10%;
 }
 
 ul li:nth-child(5n - 4) .overlayContainer {
-  right: -347px;
+  left: 10%;
 }
 
 span {

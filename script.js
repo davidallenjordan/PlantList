@@ -126,12 +126,12 @@ app.overlayToggle = function() {
 }
 
 //Listen to click on the img to open new tab
-app.openNewTab = function() {
-  $('overlayContainer').on('click', 'img', function(event) {
-    event.preventDefault();
-    console.log('the clicky worked!')
-  })
-}
+// app.openNewTab = function() {
+//   $('overlayContainer').on('click', 'img', function(event) {
+//     event.preventDefault();
+//     console.log('the clicky worked!')
+//   })
+// }
 
 function getData (name) {
   $.ajax({
