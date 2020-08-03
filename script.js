@@ -170,8 +170,6 @@ $('form').on('submit', function(event){
 
 
 
-
-
 $(document).ready(function(){
   app.init();
 });
