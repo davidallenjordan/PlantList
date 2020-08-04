@@ -626,3 +626,79 @@ a {
 a:hover {
   color: #4b5d67;
 }
+
+@media (max-width: 1230px) {
+  .cards {
+    -ms-grid-columns: (minmax(200px, 1fr))[4];
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 1000px) {
+  .cards {
+    -ms-grid-columns: (minmax(200px, 1fr))[3];
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 730px) {
+  .cards {
+    -ms-grid-columns: (minmax(200px, 1fr))[2];
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+  }
+  footer .names {
+    font-size: 1.5rem;
+  }
+  footer a {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 630px) {
+  nav {
+    display: block;
+    margin: 0 auto;
+  }
+  nav h1 {
+    padding: 0 0 15px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards {
+    -ms-grid-columns: (minmax(300px, 1fr))[1];
+        grid-template-columns: repeat(1, minmax(300px, 1fr));
+  }
+  .backCard {
+    padding: 20px;
+    text-align: center;
+  }
+  .backCard h3 span {
+    font-size: 2.75rem;
+  }
+  .backCard h3 {
+    font-size: 2.5rem;
+  }
+  .backCard p span {
+    font-size: 2.25rem;
+  }
+  .backCard p {
+    font-size: 2rem;
+  }
+  .backCard p, .backCard h3 {
+    padding-bottom: 30px;
+  }
+  .backCard p:nth-of-type(3) {
+    padding-bottom: 0;
+  }
+  .backCard span {
+    padding-bottom: 5px;
+  }
+}
+
+@media (max-width: 340px) {
+  .cards {
+    -ms-grid-columns: (minmax(270px, 1fr))[1];
+        grid-template-columns: repeat(1, minmax(270px, 1fr));
+  }
+}
