@@ -7,7 +7,7 @@
 const app = {};
 
 // Api Key & URL
-const key = 'V2xFZkxEWTRQcWJaeUJtTGo3Ynl0QT09';
+const key = 'a4nM7Nfjw1m61m8Y4TcFuA5U3xt49YFj4KkbPkPMeeE';
 const apiUrl = 'https://trefle.io/api/v1/plants/';
 
 // Initialize App
@@ -114,25 +114,24 @@ app.overlayToggle = function() {
 }
 
 //Listen to click on the img to open new tab
+app.openNewTab = function() {
+  $('overlayContainer').on('click', 'img', function(event) {
+    event.preventDefault();
+    console.log('the clicky worked!')
+  })
+}
 
-// app.openNewTab = function() {
-//   $('overlayContainer').on('click', 'img', function(event) {
-//     event.preventDefault();
-//     console.log('the clicky worked!')
-//   })
-// }
-
-function getData (name) {
 // Form Submit Event to pass on user search input
 app.userSearch = () => {
   $('form').on('submit', function(event){
     event.preventDefault();
     const userInput = $('#search').val();
-    
+
     // Pass userInput into ajax call
     app.getData(userInput);
   })
 }
+
 
 // Api call for search parameter
 app.getData = (name) => {
