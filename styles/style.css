@@ -431,6 +431,10 @@ form .searchButton {
   border-radius: 0 10px 10px 0;
 }
 
+form .searchButton:hover, form .searchButton:focus {
+  color: #63814c;
+}
+
 .errorToggle {
   visibility: hidden;
 }
@@ -503,6 +507,7 @@ form .searchButton {
   grid-auto-rows: 400px;
   gap: 40px;
   list-style: none;
+  margin: 0 auto;
 }
 
 .cardContainer {
@@ -511,8 +516,10 @@ form .searchButton {
   position: relative;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 
 .cardContainer:focus {

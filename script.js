@@ -60,18 +60,14 @@ app.createCards = (res) => {
     let image = $('<div>').addClass('frontImageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
     
     // Back of card
-    // let imageBack = $('<div>').addClass('overlayImageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
     const nameBack = $('<h3>').html(`<span>Common Name:</span> ${commonName}`);
     const genus = $('<p>').html(`<span>Genus:</span> ${arr.genus}`);
     const family = $('<p>').html(`<span>Family:</span> ${arr.family} '${arr.family_common_name}'`);
     const sciName = $('<p>').html(`<span>Scientific Name:</span> ${arr.scientific_name}`);
-    // const closeButton = $('<button title="Close">').append('<i class="fas fa-times"></i>');
-    // const textBox = $('<div>').addClass('overlayTextContainer').append(nameBack, sciName, genus, family);
 
     // No image available error handling
     if (!arr.image_url) {
       image = $('<div>').addClass('frontImageContainer').append($('<img>').attr('src', 'assets/errorImage.png').attr('alt', commonName));
-      // imageBack = $('<div>').addClass('overlayImageContainer').append($('<img>').attr('src', 'assets/errorImage.png').attr('alt', commonName));
     }
     
     // Overlay Card Package
@@ -80,17 +76,12 @@ app.createCards = (res) => {
     // Front Card Package with Overlay Package as a hidden child
     const card = $('<div>').addClass('frontCard').append(image, name);
 
-    const cardContainer = $('<li>').addClass('cardContainer').attr('tabindex', '0').append(card, cardBack);
+    const cardContainer = $('<li>').addClass('cardContainer').attr('tabindex', '0').attr('role', 'tab').attr('aria-label', 'plant list').attr('aria-selected', 'true').append(card, cardBack);
     
     $('.cards').append(cardContainer);
   });
     
-  // Give the images a chance to render before hiding loading screen
-
-
   app.toggleLoadingScreen();   
-
-  // app.overlayToggle();
 }
 
 // Brings up loader as images are rendering
@@ -105,27 +96,13 @@ app.toggleLoadingScreen = () => {
   $('.cards').addClass('hiddenOnLoad');
 }
 
-
-
-
-// Listen for 'li' click and reveal additional information for the card that was clicked or tabbed to
-// app.overlayToggle = function() {
-//   $('.cards').on('click', 'li', function() {
-//     $(this).children('.backCard').toggleClass('hide');
-//   }) 
-
-//   $('.cards').on('keydown', 'li', function() {
-//     $(this).children('.backCard').toggleClass('hide');
-//   })
-// }
-
-// // Listen to click on the img to open new tab
-// app.openNewTab = function() {
-//   $('overlayContainer').on('click', 'img', function(event) {
-//     event.preventDefault();
-//     console.log('the clicky worked!')
-//   })
-// }
+// Listen to click on the img to open new tab
+app.openNewTab = function() {
+  $('overlayContainer').on('click', 'img', function(event) {
+    event.preventDefault();
+    console.log('the clicky worked!')
+  })
+}
 
 // Form Submit Event to user input and pass to API call
 app.userSearch = () => {
