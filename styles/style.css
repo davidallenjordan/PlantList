@@ -262,16 +262,16 @@ h3 {
 }
 
 p {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 h3 span,
 .names {
-  font-size: 2.9rem;
+  font-size: 2.3rem;
 }
 
 h3 {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
 }
 
 h3 span,
@@ -281,7 +281,7 @@ p span {
 }
 
 p span {
-  font-size: 2.5rem;
+  font-size: 2.1rem;
 }
 
 .names {
@@ -412,7 +412,7 @@ form .searchButton {
 }
 
 .loadingScreen {
-  margin-top: 300px;
+  margin: 300px 0 1000px 0;
   border: 16px solid #cad1d0;
   border-top: 16px solid #8cb66b;
   border-radius: 50%;
@@ -465,21 +465,71 @@ form .searchButton {
           align-items: center;
 }
 
-.cardFront {
+.cards {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(200px, 1fr))[auto-fill];
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  -ms-grid-columns: (minmax(200px, 1fr))[5];
+      grid-template-columns: repeat(5, minmax(200px, 1fr));
   grid-auto-rows: 400px;
   gap: 40px;
   list-style: none;
-  margin: 0 auto;
 }
 
-.cardFront li {
+.cardContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.cardContainer:focus {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.frontCard, .backCard {
+  width: 100%;
+  height: 100%;
+  position: absolute;
   border: 5px solid #4b5d67;
   border-radius: 20px;
-  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.backCard {
+  padding: 5px;
+  background: #ecf4f3;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: 0;
+      -ms-flex-align: 0;
+          align-items: 0;
+}
+
+.backCard p, .backCard h3 {
+  padding-bottom: 30px;
+}
+
+.backCard p:nth-of-type(3) {
+  padding-bottom: 0;
+}
+
+.backCard span {
+  padding-bottom: 5px;
 }
 
 img {
@@ -523,84 +573,6 @@ img {
   background: #ecf4f3;
 }
 
-.overlayContainer {
-  width: 550px;
-  height: 450px;
-  padding: 20px;
-  background: #ecf4f3;
-  border: 3px solid #4b5d67;
-  border-radius: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: absolute;
-  z-index: 1;
-  top: -50px;
-  right: -175px;
-}
-
-.overlayContainer .overlayImageContainer {
-  width: 50%;
-  height: 100%;
-}
-
-.overlayContainer .overlayTextContainer {
-  height: 100%;
-  width: 50%;
-  padding: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: 0;
-      -ms-flex-align: 0;
-          align-items: 0;
-}
-
-.overlayContainer .overlayTextContainer p, .overlayContainer .overlayTextContainer h3 {
-  padding-bottom: 30px;
-}
-
-.overlayContainer .overlayTextContainer p:nth-of-type(3) {
-  padding-bottom: 0;
-}
-
-.overlayContainer .overlayTextContainer span {
-  padding-bottom: 5px;
-}
-
-ul li:nth-child(5n) .overlayContainer {
-  right: -5px;
-}
-
-ul li:nth-child(5n - 4) .overlayContainer {
-  right: -347px;
-}
-
-span {
-  font-size: 4rem;
-}
-
-.hide {
-  display: none;
-}
-
 footer {
   margin-top: 50px;
   padding: 20px 0;
@@ -620,7 +592,6 @@ footer {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin-top: 50px;
 }
 
 footer ul {

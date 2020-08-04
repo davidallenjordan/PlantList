@@ -7,7 +7,7 @@
 const app = {};
 
 // Api Key & URL
-const key = 'V2xFZkxEWTRQcWJaeUJtTGo3Ynl0QT09';
+const key = 'a4nM7Nfjw1m61m8Y4TcFuA5U3xt49YFj4KkbPkPMeeE';
 const apiUrl = 'https://trefle.io/api/v1/plants/';
 
 // Initialize App
@@ -36,15 +36,13 @@ app.getPlants = () => {
       }
     }
   }).then(function (result) {
-    
     app.createCards(result.data);
-
   })
 }
 
 // Notates through data to append onto the page 'ul'
 app.createCards = (res) => {
-  $('.cardFront').empty();
+  $('.cards').empty().unbind();
 
   // Iterates through data array and dynamically creates elements for plant cards
   res.forEach((arr) => { 
@@ -54,7 +52,6 @@ app.createCards = (res) => {
 
     // Error handling to check if the Common Name will fit on the front 'li' 
     if (trimmedCommonName.length > 21) {
-      console.log('worw')
       trimmedCommonName = trimmedCommonName.slice(0, 19) + '...';
     };
 
@@ -63,53 +60,61 @@ app.createCards = (res) => {
     let image = $('<div>').addClass('frontImageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
     
     // Back of card
-    let imageBack = $('<div>').addClass('overlayImageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
-    const nameFront = $('<h3>').html(`<span>Common Name:</span> ${commonName}`);
+    // let imageBack = $('<div>').addClass('overlayImageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
+    const nameBack = $('<h3>').html(`<span>Common Name:</span> ${commonName}`);
     const genus = $('<p>').html(`<span>Genus:</span> ${arr.genus}`);
     const family = $('<p>').html(`<span>Family:</span> ${arr.family} '${arr.family_common_name}'`);
     const sciName = $('<p>').html(`<span>Scientific Name:</span> ${arr.scientific_name}`);
-    const closeButton = $('<button title="Close">').append('<i class="fas fa-times"></i>');
-    const textBox = $('<div>').addClass('overlayTextContainer').append(closeButton, nameFront, sciName, genus, family);
+    // const closeButton = $('<button title="Close">').append('<i class="fas fa-times"></i>');
+    // const textBox = $('<div>').addClass('overlayTextContainer').append(nameBack, sciName, genus, family);
 
     // No image available error handling
     if (!arr.image_url) {
       image = $('<div>').addClass('frontImageContainer').append($('<img>').attr('src', 'assets/errorImage.png').attr('alt', commonName));
-      imageBack = $('<div>').addClass('overlayImageContainer').append($('<img>').attr('src', 'assets/errorImage.png').attr('alt', commonName));
+      // imageBack = $('<div>').addClass('overlayImageContainer').append($('<img>').attr('src', 'assets/errorImage.png').attr('alt', commonName));
     }
     
     // Overlay Card Package
-    const cardBack = $('<div>').addClass('overlayContainer hide').append(imageBack, textBox);
+    const cardBack = $('<div>').addClass('backCard').append(nameBack, sciName, genus, family);
     
     // Front Card Package with Overlay Package as a hidden child
-    const card = $('<li>').attr('tabindex', '0').append(image, name, cardBack);
+    const card = $('<div>').addClass('frontCard').append(image, name);
+
+    const cardContainer = $('<li>').addClass('cardContainer').attr('tabindex', '0').append(card, cardBack);
     
-    $('.cardFront').append(card);
+    $('.cards').append(cardContainer);
 
   });
+
+  setTimeout(() => {
+    $('.loader').toggleClass('loadingScreen');
+    $('.cards').toggleClass('hiddenOnLoad');
+  }, 2000);
+
     
   // Give the images a chance to render before hiding loading screen
-  setTimeout(() => {
-    app.toggleLoadingScreen();    
-  }, 2000);
+  // setTimeout(() => {
+  //   app.toggleLoadingScreen();    
+  // }, 2000);
   
   app.overlayToggle();
 }
 
 // Listen for 'li' click and reveal additional information for the card that was clicked
 app.overlayToggle = function() {
-  $('.overlayContainer').addClass('hide');
-
-  $('.cardFront').on('click', 'li', $('li').keydown(), function() {
-    $(this).children('.overlayContainer').toggleClass('hide');
+  
+  $('.cards').on('click', 'li', function() {
+    $(this).children('.backCard').toggleClass('hide');
   }) 
 
-  $('.cardFront').on('keydown', 'li', function() {
-    $(this).children('.overlayContainer').toggleClass('hide');
+  $('.cards').on('keydown', 'li', function() {
+    $(this).children('.backCard').toggleClass('hide');
   })
 
+
   // Why does this not work wtf
-  // $('.cardFront').on('click', 'button', function() {
-  //   $('.overlayContainer').addClass('hide');
+  // $('.cards').on('click', 'button', function() {
+  //   $('.backCard').addClass('hide');
   // })
 }
 
@@ -140,27 +145,31 @@ app.getData = (name) => {
     
   }).then((result) => {
 
-    app.toggleLoadingScreen();
-    // $('.cardFront').empty();
+    // app.toggleLoadingScreen();
     app.createCards(result.data);
     app.errorMessage();
   })
 
 }
 
+// Brings up loader as images are rendering
+// app.toggleLoadingScreen = () => {
+
+//   setTimeout(() => {
+//     $('.loader').toggleClass('loadingScreen');
+//     $('.cards').toggleClass('hiddenOnLoad');
+//   }, 2000);
+
+
+// }
+
 // Error message if search fails
 app.errorMessage = () => {
-  if ($('.cardFront').children().length === 0) {
+  if ($('.cards').children().length === 0) {
     $('nav p').removeClass('errorToggle');
   } else {
     $('nav p').addClass('errorToggle');
   };
-}
-
-// Brings up loader as images are rendering
-app.toggleLoadingScreen = () => {
-  $('.loader').toggleClass('loadingScreen');
-  $('.cardFront').toggleClass('hiddenOnLoad');
 }
 
 

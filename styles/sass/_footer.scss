@@ -5,7 +5,6 @@ footer {
   
   @include flex(0, space-evenly, center);
   flex-wrap: wrap;
-  margin-top: 50px;
 
   ul {
     @include flex(0, space-between, 0);

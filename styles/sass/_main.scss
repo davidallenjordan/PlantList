@@ -1,6 +1,6 @@
 // Loading Screen
 .loadingScreen {
-  margin-top: 300px;
+  margin: 300px 0 1000px 0;
   border: 16px solid #cad1d0;
   border-top: 16px solid #8cb66b;
   border-radius: 50%;
@@ -28,19 +28,64 @@
   @include flex(row, center, center);
 }
 
+// minmax(200px, 1fr)
+
 // Grid Styling
-.cardFront {
+.cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(5, minmax(200px, 1fr));
   grid-auto-rows: 400px;
   gap: 40px;
   list-style: none;
-  margin: 0 auto;
-  
-  li {
-    border: 5px solid $quaternary;
-    border-radius: 20px;
-    position: relative;
+  // margin: 0 auto;
+}
+
+// Card 'li' Styling
+
+.cardContainer {
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+
+  &:focus {
+    transform: rotateY(180deg);
+  }
+}
+
+.frontCard, .backCard {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+
+  border: 5px solid $quaternary;
+  border-radius: 20px;
+
+  backface-visibility: hidden;
+}
+
+.backCard {
+  padding: 5px;
+  background: $tertiary;
+
+  transform: rotateY(180deg);
+
+  @include flex(column, center, 0);
+
+  p, h3 {
+  padding-bottom: 30px;
+  }
+
+  p:nth-of-type(3) {
+    padding-bottom: 0;
+  }
+
+  span {
+    padding-bottom: 5px;
   }
 }
 
@@ -78,68 +123,49 @@ img {
 
 // Overlay Styling --->
 
-.overlayContainer {
-  width: 550px;
-  height: 450px;
-  padding: 20px;
   
-  background: $tertiary;
-  border: 3px solid $quaternary;
-  border-radius: 20px;
+  // @include flex(row, center, center);
   
-  @include flex(row, center, center);
-  
-  position: absolute;
-  z-index: 1;
-  top: -50px;
-  right: -175px;
-  
-  
-  
+  // position: absolute;
+  // top: 0;
+  // right: 0;
+  // bottom: 0;
+  // left: 0;
+  // z-index: 1;
 
-  .overlayImageContainer {
-    width: 50%;
-    height: 100%;
-  }
-  
-  .overlayTextContainer {
-    height: 100%;
-    width: 50%;
-    padding: 20px;
+  // opacity: 0;
 
-    @include flex(column, center, 0);
+  // top: -50px;
+  // right: -175px;
+
+    // .overlayImageContainer {
+  //   width: 50%;
+  //   height: 100%;
+  // }
+  
+  // .overlayTextContainer {
+  //   height: 100%;
+  //   width: 50%;
+  //   padding: 20px;
+
+  //   @include flex(column, center, 0);
     
-    p, h3 {
-      padding-bottom: 30px;
-    }
-
-    p:nth-of-type(3) {
-      padding-bottom: 0;
-    }
-
-    span {
-      padding-bottom: 5px;
-    }
-  }
-}
+  // }
 
 // Keeps the overlay positioning inside the 'ul' grid-space
-ul li:nth-child(5n) .overlayContainer {
-  right: -5px;
-}
+// ul li:nth-child(5n) .backCard {
+//   right: -5px;
+// }
 
-ul li:nth-child(5n - 4) .overlayContainer {
-  right: -347px;
-}
+// ul li:nth-child(5n - 4) .backCard {
+//   right: -347px;
+// }
 
-span {
-  font-size: 4rem;
-}
 
 // Hidden class for Overlay
-.hide {
-  display: none;
-}
+// .hide {
+//   display: none;
+// }
 
 // Flip card elements
 // .flipCardContainer {
