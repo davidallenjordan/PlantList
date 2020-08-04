@@ -2,63 +2,78 @@ nav {
   padding: 40px;
   @include flex(0, space-between, center);
   flex-wrap: wrap;
+}
 
-  p {
-    padding-right: 20px;
-    color: $error;
+// Title / Subtitle
+h1 {
+  padding: 0 0 10px 20px;
+
+  i {
+    font-size: 4.5rem;
+    padding-bottom: 5px;
   }
 }
 
-// Error Message Styles
-.errorToggle {
-  display: none;
+.subTitle {
+  padding-left: 16px;
 }
 
-.errorMessage {
-  align-self: center;
+
+// Search Bar
+.searchError {
+  padding: 10px 20px 0 0;
+  color: $error;
 }
 
-h1 {
-  padding-left: 20px;
+.formContainer {
+  @include flex(column, 0, 0);
 }
-
 
 form {
+  
   @include flex(row, 0, 0);
   padding-right: 20px;
   height: 50px;
-
   
   input {
     display: block;
     height: 100%;
     padding: 15px 20px 15px 15px;
-
+    
     font-size: 2rem;
-
+    
     border: 3px solid $primary;
     border-radius: 5px 0 0 5px;
     color: $black;
-
+    
     &::placeholder {
       font-family: $base;
       color: $primary;
       font-size: 2rem;
     }
   }
-
+  
   .searchButton {
     height: 100%;
-
+    
     margin: 0;
     padding: 10px 5px;
-
+    
     text-align: center;
     font-size: 2rem;
-
+    
     background: $primary;
     color: $white;
     border: none;
     border-radius: 0 10px 10px 0;    
   }
+}
+
+// Error Message Styles
+.errorToggle {
+  visibility: hidden;
+}
+
+.errorMessage {
+  align-self: center;
 }

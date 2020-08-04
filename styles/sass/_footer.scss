@@ -12,18 +12,39 @@ footer {
     align-self: center;
   }
 
-  .names {
-    padding-top: 5px;
+  // .names {    
+  //    a {
+  //   }
+  // }
+}
+
+a {
+  padding: 20px 20px;
+  font-size: 4rem;
+  color: $tertiary;
+  text-decoration: none;
+}
+
+.names {
+  padding-top: 5px;
+  a {
+    font-size: 3rem;
+
+    &:hover,
+    &:focus {
+      color: $quaternary;
+    }
   }
 }
 
+.github:hover {
+  color: #D64C31;
+}
 
-a{
-  padding: 20px 50px;
-  font-size: 4rem;
-  color: $tertiary;
+.twitter:hover {
+  color: #1dcaff;
+}
 
-  &:hover {
-    color: $quaternary;
-  }
+.linkedin:hover {
+  color: #0072b1;
 }

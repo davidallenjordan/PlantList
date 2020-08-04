@@ -51,7 +51,7 @@ app.createCards = (res) => {
     let trimmedCommonName = commonName;
 
     // Error handling to check if the Common Name will fit on the front 'li' 
-    if (trimmedCommonName.length > 21) {
+    if (trimmedCommonName.length > 20) {
       trimmedCommonName = trimmedCommonName.slice(0, 19) + '...';
     };
 
@@ -83,54 +83,63 @@ app.createCards = (res) => {
     const cardContainer = $('<li>').addClass('cardContainer').attr('tabindex', '0').append(card, cardBack);
     
     $('.cards').append(cardContainer);
-
   });
-
-  setTimeout(() => {
-    $('.loader').toggleClass('loadingScreen');
-    $('.cards').toggleClass('hiddenOnLoad');
-  }, 2000);
-
     
   // Give the images a chance to render before hiding loading screen
-  // setTimeout(() => {
-  //   app.toggleLoadingScreen();    
-  // }, 2000);
-  
-  app.overlayToggle();
+
+
+  app.toggleLoadingScreen();   
+
+  // app.overlayToggle();
 }
 
-// Listen for 'li' click and reveal additional information for the card that was clicked
-app.overlayToggle = function() {
-  
-  $('.cards').on('click', 'li', function() {
-    $(this).children('.backCard').toggleClass('hide');
-  }) 
+// Brings up loader as images are rendering
+app.toggleLoadingScreen = () => {
 
-  $('.cards').on('keydown', 'li', function() {
-    $(this).children('.backCard').toggleClass('hide');
-  })
+  setTimeout(() => {
+    $('.loader').removeClass('loadingScreen');
+    $('.cards').removeClass('hiddenOnLoad');
+  }, 2000);
 
-
-  // Why does this not work wtf
-  // $('.cards').on('click', 'button', function() {
-  //   $('.backCard').addClass('hide');
-  // })
+  $('.loader').addClass('loadingScreen');
+  $('.cards').addClass('hiddenOnLoad');
 }
 
-// Form Submit Event to pass on user search input
+
+
+
+// Listen for 'li' click and reveal additional information for the card that was clicked or tabbed to
+// app.overlayToggle = function() {
+//   $('.cards').on('click', 'li', function() {
+//     $(this).children('.backCard').toggleClass('hide');
+//   }) 
+
+//   $('.cards').on('keydown', 'li', function() {
+//     $(this).children('.backCard').toggleClass('hide');
+//   })
+// }
+
+// // Listen to click on the img to open new tab
+// app.openNewTab = function() {
+//   $('overlayContainer').on('click', 'img', function(event) {
+//     event.preventDefault();
+//     console.log('the clicky worked!')
+//   })
+// }
+
+// Form Submit Event to user input and pass to API call
 app.userSearch = () => {
   $('form').on('submit', function(event){
     event.preventDefault();
     const userInput = $('#search').val();
-    
-    // Pass userInput into ajax call
-    app.getData(userInput);
+
+    app.getSearch(userInput);
   })
 }
 
-// Api call for search parameter
-app.getData = (name) => {
+
+// API call for search parameter
+app.getSearch = (name) => {
   $.ajax({
     method: 'GET',
     dataType: 'json',
@@ -145,23 +154,10 @@ app.getData = (name) => {
     
   }).then((result) => {
 
-    // app.toggleLoadingScreen();
     app.createCards(result.data);
     app.errorMessage();
   })
-
 }
-
-// Brings up loader as images are rendering
-// app.toggleLoadingScreen = () => {
-
-//   setTimeout(() => {
-//     $('.loader').toggleClass('loadingScreen');
-//     $('.cards').toggleClass('hiddenOnLoad');
-//   }, 2000);
-
-
-// }
 
 // Error message if search fails
 app.errorMessage = () => {
