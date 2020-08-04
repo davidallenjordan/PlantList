@@ -13,11 +13,9 @@
     
     <h1>PlantList</h1>
     
-    <!-- Search bar -->
-    
-
+    <!-- Search bar with Error Message-->
     <form>
-      <p class="errorMessage"></p>
+      <p class="errorMessage errorToggle">Please enter a plant name <i class="fas fa-leaf"></i></p>
       <label for="search" class="srOnly">Search</label>
       
       <input type="search" id="search" placeholder="Search" class="form">
@@ -30,6 +28,7 @@
   <main>
     <div class="wrapper flexContainer">
 
+      <!-- Loading animation to give images a chance to render -->
       <div class="loader loadingScreen"></div>
         
       <!-- On page load cards are added dynamically into 'ul' -->
@@ -42,7 +41,6 @@
   <!-- Links and creator information -->
   <footer>
     <!-- David -->
-    <!-- <h4>David</h4> -->
     <ul>
       <li class="names">David Allen-Jordan</li>
       <li>
@@ -56,7 +54,6 @@
       </li>
     </ul>
     <!-- Deb -->
-    <!-- <h4>Deb</h4> -->
     <ul>
         <li class="names">Deb Yu</liclass="names">
         <li>
