@@ -1,31 +1,21 @@
-// When page is loaded Make a default API call and populate page
-// Retrieve a selection of plants including names and image and populate the page
-// Create html dynamically for card information
+// When page is loaded Make a default API call
+// Retrieve a selection of plants including names and image and populate page dynamically
 // On click onto plant card bring up hidden card with additional information
 // Listen for form submit on the search bar and empty page and search API with value, populate page with corresponding plants
-// If search request can't be made, have a notice pop up
-
-// Stretch Goal:
-// 'pagination' - On scroll to bottom of screen have more cards pop up and be populated by API
-// Error handling for spelling of search parameter
-
-
-
-
-
-
-
+// If search request can't be made show an error
 
 const app = {};
 
+// Api Key & URL
+const key = 'V2xFZkxEWTRQcWJaeUJtTGo3Ynl0QT09';
+const apiUrl = 'https://trefle.io/api/v1/plants/';
 
+// Initialize App
 app.init = () => {
   app.clearSearch()
   app.getPlants();
-
+  app.userSearch();
 }
-const key = 'V2xFZkxEWTRQcWJaeUJtTGo3Ynl0QT09';
-const apiUrl = 'https://trefle.io/api/v1/plants/';
 
 // Clears the search bar when the page is refreshed
 app.clearSearch = () => {
@@ -47,33 +37,30 @@ app.getPlants = () => {
     }
   }).then(function (result) {
     
-    // const apiResults = result.data;
-    console.log(result);
+    app.createCards(result.data);
 
-    const plantList = [];
-
-    for(let i = 0; i <= 19; i++) {
-      plantList.push(result.data[i]);
-    }
-    console.log(plantList);
-
-    app.cardFront(plantList);
   })
 }
 
-
 // Notates through data to append onto the page 'ul'
-app.cardFront = (res) => {
+app.createCards = (res) => {
+  $('.cardFront').empty();
 
   // Iterates through data array and dynamically creates elements for plant cards
   res.forEach((arr) => { 
 
     const commonName = arr.common_name;
-    
+    let trimmedCommonName = commonName;
+
+    // Error handling to check if the Common Name will fit on the front 'li' 
+    if (trimmedCommonName.length > 21) {
+      console.log('worw')
+      trimmedCommonName = trimmedCommonName.slice(0, 19) + '...';
+    };
+
     // Front of card
-    const name = $('<div>').addClass('frontNameContainer').append($('<h2>').text(commonName));
+    const name = $('<div>').addClass('frontNameContainer').append($('<h2>').text(trimmedCommonName));
     let image = $('<div>').addClass('frontImageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
-    
     
     // Back of card
     let imageBack = $('<div>').addClass('overlayImageContainer').append($('<img>').attr('src', arr.image_url).attr('alt', commonName));
@@ -91,13 +78,13 @@ app.cardFront = (res) => {
     }
     
     // Overlay Card Package
-    const cardBack = $('<div>').addClass('overlayContainer').addClass('hide').append(imageBack, textBox);
+    const cardBack = $('<div>').addClass('overlayContainer hide').append(imageBack, textBox);
     
     // Front Card Package with Overlay Package as a hidden child
-    const card = $('<li>').append(image, name, cardBack);
+    const card = $('<li>').attr('tabindex', '0').append(image, name, cardBack);
     
     $('.cardFront').append(card);
-    
+
   });
     
   // Give the images a chance to render before hiding loading screen
@@ -105,19 +92,20 @@ app.cardFront = (res) => {
     app.toggleLoadingScreen();    
   }, 2000);
   
-  // Add a jquery action to change class and reveal page
   app.overlayToggle();
 }
 
-
-
 // Listen for 'li' click and reveal additional information for the card that was clicked
 app.overlayToggle = function() {
+  $('.overlayContainer').addClass('hide');
 
-  $('.cardFront').on('click', 'li', function() {
-    // $('.overlayContainer').addClass('hide');
+  $('.cardFront').on('click', 'li', $('li').keydown(), function() {
     $(this).children('.overlayContainer').toggleClass('hide');
   }) 
+
+  $('.cardFront').on('keydown', 'li', function() {
+    $(this).children('.overlayContainer').toggleClass('hide');
+  })
 
   // Why does this not work wtf
   // $('.cardFront').on('click', 'button', function() {
@@ -126,14 +114,28 @@ app.overlayToggle = function() {
 }
 
 //Listen to click on the img to open new tab
-app.openNewTab = function() {
-  $('overlayContainer').on('click', 'img', function(event) {
+
+// app.openNewTab = function() {
+//   $('overlayContainer').on('click', 'img', function(event) {
+//     event.preventDefault();
+//     console.log('the clicky worked!')
+//   })
+// }
+
+function getData (name) {
+// Form Submit Event to pass on user search input
+app.userSearch = () => {
+  $('form').on('submit', function(event){
     event.preventDefault();
-    console.log('the clicky worked!')
+    const userInput = $('#search').val();
+    
+    // Pass userInput into ajax call
+    app.getData(userInput);
   })
 }
 
-function getData (name) {
+// Api call for search parameter
+app.getData = (name) => {
   $.ajax({
     method: 'GET',
     dataType: 'json',
@@ -147,16 +149,22 @@ function getData (name) {
     }
     
   }).then((result) => {
-    $('.cardFront').empty();
-    console.log('it works!', result)
+
     app.toggleLoadingScreen();
-    app.cardFront(result.data);
-    
-    // Error message if search fails
-    if ($('.cardFront').children().length === 0) {
-      alert(`oops! We don't have what you're looking for!`)
-    }; 
+    // $('.cardFront').empty();
+    app.createCards(result.data);
+    app.errorMessage();
   })
+
+}
+
+// Error message if search fails
+app.errorMessage = () => {
+  if ($('.cardFront').children().length === 0) {
+    $('nav p').removeClass('errorToggle');
+  } else {
+    $('nav p').addClass('errorToggle');
+  };
 }
 
 // Brings up loader as images are rendering
@@ -178,6 +186,7 @@ $('form').on('submit', function(event){
 
 
 
+// Document Ready!
 $(document).ready(function(){
   app.init();
 });
