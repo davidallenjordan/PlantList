@@ -5,7 +5,6 @@ footer {
   
   @include flex(0, space-evenly, center);
   flex-wrap: wrap;
-  margin-top: 50px;
 
   ul {
     @include flex(0, space-between, 0);
@@ -13,21 +12,29 @@ footer {
     align-self: center;
   }
 
-  .names {
-<<<<<<< HEAD
-    font-size: 3rem;
-    font-family: $base;
-    color: $white;
-=======
-    padding-top: 5px;
->>>>>>> 9409d0e891534a5a4befaa8408d4b02eb9776e21
-  }
+  // .names {    
+  //    a {
+  //   }
+  // }
 }
 
-a{
-  padding: 20px 50px;
+a {
+  padding: 20px 20px;
   font-size: 4rem;
   color: $tertiary;
+  text-decoration: none;
+}
+
+.names {
+  padding-top: 5px;
+  a {
+    font-size: 3rem;
+
+    &:hover,
+    &:focus {
+      color: $quaternary;
+    }
+  }
 }
 
 .github:hover {

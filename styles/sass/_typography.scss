@@ -4,6 +4,11 @@ h1 {
   font-size: 6rem;
 }
 
+.subTitle {
+  color: $secondary;
+  font-size: 2.25rem;
+}
+
 h2 {
   font-size: 2.75rem;
   font-weight: 300;
@@ -26,16 +31,16 @@ h3 {
 
 
 p {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 h3 span,
 .names {
-  font-size: 2.9rem;
+  font-size: 2.3rem;
 }
 
 h3 {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
 }
 
 h3 span,
@@ -45,7 +50,7 @@ p span {
 }
 
 p span {
-  font-size: 2.5rem;
+  font-size: 2.1rem;
 }
 
 .names {

@@ -1,97 +1,138 @@
 
 // Lets have the grid columns change as the screen gets smaller so instead of our boxes squishing they # of columns is reduced. We can also re-size the boxes as we see fit.
 
-
-//FIRST BREAK POINT - 4 GRIDS
-@media (max-width: 1288px) {
-  body {
-    border: 3px solid yellow;
+// FIRST BREAK POINT - 4 GRIDS
+@media (max-width: 1230px) {
+  .cards {
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
   }
-
-  ul li:nth-child(4n) .overlayContainer {
-    right: 10%;
-  }
-  
-  ul li:nth-child(4n - 3) .overlayContainer {
-    left: 10%;
-  }
-
 }
 
-//SECOND BREAK POINT - 3 GRIDS
-@media (max-width: 1029px) {
-  body {
-    border: 3px solid orangered;
+// SECOND BREAK POINT - 3 GRIDS
+@media (max-width: 1000px) {
+  .cards {
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
   }
 
-  ul li:nth-child(3n) .overlayContainer {
-    right: 10%;
+  footer {
+    .names a {
+      font-size: 2.3rem;
+    }
   }
-  
-  ul li:nth-child(3n - 2) .overlayContainer {
-    left: 10%;
-  }
-
 }
 
-//THIRD BREAK POINT - 2 GRIDS
-@media (max-width: 761px) {
-  body {
-    border: 5px solid blue;
+// THIRD BREAK POINT - 2 GRIDS
+@media (max-width: 730px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+  }
+}
+
+// Tablets / Small Screens
+@media (max-width: 681px) {
+  nav {
+    padding: 20px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+
+    form {
+      margin: 0 auto;
+      padding-right: 0;
+    }
+
+    h1 {
+      padding: 0 0 10px 0;
+    }
+  }
+  .searchError {
+    padding: 10px 0 0 0;
   }
 
-  ul li:nth-child(2n) .overlayContainer {
-    right: 10%;
+  .subTitle {
+    padding: 0 0 5px 0;
   }
+  // End of Query
+}
+
+// Small Tablets / Mobile Phones
+@media (max-width: 480px) {
   
-  ul li:first-child .overlayContainer {
-    left: 10%;
+  // Single Column Grid
+  .cards {
+    grid-template-columns: repeat(1, minmax(300px, 1fr));
   }
 
-  //overlay container
-  .overlayContainer {
-    border: 3px solid red;
+  h1 {
+    font-size: 5rem;
+    padding-bottom: 7px;
+
+    i {
+      font-size: 3.5rem;
+    }
   }
-  //footer
-  footer .names {
-    font-size: 1.5rem;
-  }
-  footer a {
+
+  .subTitle {
     font-size: 2rem;
   }
-}
 
-//BREAK POINT 3.5 - MAKE OVERLAY SMALLER TO MATCH BROWSER SIZE
-@media (max-width: 688px) {
-  .overlayContainer .overlayImageContainer,
-  .overlayContainer img {
-    display: none;
-  }
-}
-
-//FOURTH BREAKT POINT - 1 GRID 
-@media (max-width: 498px) {
-  body {
-    border: 3px solid green;
+  form {
+    height: 45px;
   }
 
-  // ul li:nth-child(2n) .overlayContainer {
-  //   right: 10px;
-  // }
-  
-  ul li:first-child .overlayContainer {
-    left: 50%;
-  }
-}
+  .backCard {
+    padding: 20px;
+    text-align: center;
 
-//MOBILE 
-@media (max-width: 380px) {
-  .overlayContainer {
-    @include flex(0, 0, 0);
-    flex-wrap: wrap;
-
-    img {
-      display: none;
+    h3 span {
+      font-size: 2.75rem;
     }
+
+    h3 {
+      font-size: 2.5rem;
+    }
+
+    p span {
+      font-size: 2.25rem;
+    }
+
+    p {
+      font-size: 2rem;
+    }
+
+    p, h3 {
+      padding-bottom: 30px;
+    }
+
+    p:nth-of-type(3) {
+      padding-bottom: 0;
+    }
+
+    span {
+      padding-bottom: 5px;
+    }
+  }
+
+  footer {
+    .names {
+      padding: 0;
+
+      a {
+        font-size: 1.8rem;
+      }
+    }
+  
+    a {
+      font-size: 2.5rem;
+      padding: 20px 10px;
+    }
+  }
+// End of Query
+}
+
+// Smallest Size Mobile
+@media (max-width: 340px) {
+  .cards {
+    grid-template-columns: repeat(1, minmax(270px, 1fr));
   }
 }
