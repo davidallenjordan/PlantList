@@ -706,6 +706,13 @@ a {
   }
 }
 
+@media (max-width: 688px) {
+  .overlayContainer .overlayImageContainer,
+  .overlayContainer img {
+    display: none;
+  }
+}
+
 @media (max-width: 498px) {
   body {
     border: 3px solid green;

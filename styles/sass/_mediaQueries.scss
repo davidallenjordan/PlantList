@@ -61,6 +61,14 @@
   }
 }
 
+//BREAK POINT 3.5 - MAKE OVERLAY SMALLER TO MATCH BROWSER SIZE
+@media (max-width: 688px) {
+  .overlayContainer .overlayImageContainer,
+  .overlayContainer img {
+    display: none;
+  }
+}
+
 //FOURTH BREAKT POINT - 1 GRID 
 @media (max-width: 498px) {
   body {
