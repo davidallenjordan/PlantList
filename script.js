@@ -3,7 +3,7 @@ const app = {};
 
 // Api Key & URL
 const key = 'a4nM7Nfjw1m61m8Y4TcFuA5U3xt49YFj4KkbPkPMeeE';
-const apiUrl = 'http://trefle.io/api/v1/plants/';
+const apiUrl = 'https://trefle.io/api/v1/plants/';
 
 // Initialize App
 app.init = () => {
@@ -21,13 +21,13 @@ app.clearSearch = () => {
 app.getPlants = () => {
 
   $.ajax({
-    url: 'http://proxy.hackeryou.com',
+    url: 'https://proxy.hackeryou.com',
     dataType: 'json',
     method: 'GET',
     data: {
       reqUrl: apiUrl,
       params: {
-        token: key
+        token: key,
       }
     }
   }).then(function (result) {
@@ -108,7 +108,7 @@ app.getSearch = (name) => {
   $.ajax({
     method: 'GET',
     dataType: 'json',
-    url: `http://proxy.hackeryou.com/`, 
+    url: `https://proxy.hackeryou.com/`, 
     data: {
       reqUrl: `${apiUrl}search`,
       params: {
