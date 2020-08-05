@@ -11,11 +11,6 @@ footer {
     list-style: none;
     align-self: center;
   }
-
-  // .names {    
-  //    a {
-  //   }
-  // }
 }
 
 a {
@@ -27,6 +22,7 @@ a {
 
 .names {
   padding-top: 5px;
+
   a {
     font-size: 3rem;
 
@@ -37,6 +33,7 @@ a {
   }
 }
 
+// Social Links
 .github:hover {
   color: #D64C31;
 }

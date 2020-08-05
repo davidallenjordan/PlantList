@@ -243,7 +243,6 @@ h1 {
 
 .subTitle {
   color: #63814c;
-  font-size: 2.25rem;
 }
 
 h2 {
@@ -275,7 +274,8 @@ h3 span,
   font-size: 2.3rem;
 }
 
-h3 {
+h3,
+.subTitle {
   font-size: 2.25rem;
 }
 
@@ -338,8 +338,8 @@ h1 {
 }
 
 h1 i {
-  font-size: 4.5rem;
   padding-bottom: 5px;
+  font-size: 4.5rem;
 }
 
 .subTitle {
@@ -368,6 +368,8 @@ h1 i {
 }
 
 form {
+  height: 50px;
+  padding-right: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -381,13 +383,10 @@ form {
   -webkit-box-align: 0;
       -ms-flex-align: 0;
           align-items: 0;
-  padding-right: 20px;
-  height: 50px;
 }
 
 form input {
   display: block;
-  height: 100%;
   padding: 15px 20px 15px 15px;
   font-size: 2rem;
   border: 3px solid #8cb66b;
@@ -398,31 +397,35 @@ form input {
 form input::-webkit-input-placeholder {
   font-family: "Roboto", sans-serif;
   color: #8cb66b;
-  font-size: 2rem;
+  font-size: inherit;
 }
 
 form input:-ms-input-placeholder {
   font-family: "Roboto", sans-serif;
   color: #8cb66b;
-  font-size: 2rem;
+  font-size: inherit;
 }
 
 form input::-ms-input-placeholder {
   font-family: "Roboto", sans-serif;
   color: #8cb66b;
-  font-size: 2rem;
+  font-size: inherit;
 }
 
 form input::placeholder {
   font-family: "Roboto", sans-serif;
   color: #8cb66b;
-  font-size: 2rem;
+  font-size: inherit;
+}
+
+form input,
+form .searchButton {
+  height: 100%;
 }
 
 form .searchButton {
-  height: 100%;
-  margin: 0;
   padding: 10px 5px;
+  margin: 0;
   text-align: center;
   font-size: 2rem;
   background: #8cb66b;
@@ -511,8 +514,6 @@ form .searchButton:hover, form .searchButton:focus {
 }
 
 .cardContainer {
-  width: 100%;
-  height: 100%;
   position: relative;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
@@ -527,9 +528,15 @@ form .searchButton:hover, form .searchButton:focus {
           transform: rotateY(180deg);
 }
 
-.frontCard, .backCard {
+.cardContainer,
+.frontCard,
+.backCard,
+img {
   width: 100%;
   height: 100%;
+}
+
+.frontCard, .backCard {
   position: absolute;
   border: 5px solid #4b5d67;
   border-radius: 20px;
@@ -547,10 +554,10 @@ form .searchButton:hover, form .searchButton:focus {
 }
 
 .frontNameContainer {
-  border-top: 2px solid #4b5d67;
   height: 20%;
-  overflow: hidden;
   padding: 10px;
+  overflow: hidden;
+  border-top: 2px solid #4b5d67;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -566,13 +573,13 @@ form .searchButton:hover, form .searchButton:focus {
           align-items: 0;
 }
 
-.frontNameContainer h2 {
+.frontNameContainer h2,
+.backCard {
   background: #ecf4f3;
 }
 
 .backCard {
   padding: 5px;
-  background: #ecf4f3;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
   display: -webkit-box;
@@ -602,21 +609,7 @@ form .searchButton:hover, form .searchButton:focus {
   padding-bottom: 5px;
 }
 
-.backCard img {
-  opacity: 0.8;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-
-.backCard img:hover, .backCard img:focus {
-  opacity: 1;
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
-}
-
 img {
-  width: 100%;
-  height: 100%;
   display: block;
   -o-object-fit: cover;
      object-fit: cover;
@@ -721,15 +714,17 @@ a {
   nav {
     padding: 20px;
     display: block;
-    margin: 0 auto;
     text-align: center;
   }
   nav form {
-    margin: 0 auto;
     padding-right: 0;
   }
   nav h1 {
     padding: 0 0 10px 0;
+  }
+  nav,
+  nav form {
+    margin: 0 auto;
   }
   .searchError {
     padding: 10px 0 0 0;
@@ -745,8 +740,8 @@ a {
         grid-template-columns: repeat(1, minmax(300px, 1fr));
   }
   h1 {
-    font-size: 5rem;
     padding-bottom: 7px;
+    font-size: 5rem;
   }
   h1 i {
     font-size: 3.5rem;
@@ -789,8 +784,8 @@ a {
     font-size: 1.8rem;
   }
   footer a {
-    font-size: 2.5rem;
     padding: 20px 10px;
+    font-size: 2.5rem;
   }
 }
 

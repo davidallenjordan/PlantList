@@ -1,5 +1,6 @@
 nav {
   padding: 40px;
+
   @include flex(0, space-between, center);
   flex-wrap: wrap;
 }
@@ -9,8 +10,8 @@ h1 {
   padding: 0 0 10px 20px;
 
   i {
-    font-size: 4.5rem;
     padding-bottom: 5px;
+    font-size: 4.5rem;
   }
 }
 
@@ -30,14 +31,13 @@ h1 {
 }
 
 form {
-  
-  @include flex(row, 0, 0);
-  padding-right: 20px;
   height: 50px;
+  padding-right: 20px;
+
+  @include flex(row, 0, 0);
   
   input {
     display: block;
-    height: 100%;
     padding: 15px 20px 15px 15px;
     
     font-size: 2rem;
@@ -49,15 +49,18 @@ form {
     &::placeholder {
       font-family: $base;
       color: $primary;
-      font-size: 2rem;
+      font-size: inherit;
     }
+  }
+
+  input,
+  .searchButton {
+    height: 100%;
   }
   
   .searchButton {
-    height: 100%;
-    
-    margin: 0;
     padding: 10px 5px;
+    margin: 0;
     
     text-align: center;
     font-size: 2rem;

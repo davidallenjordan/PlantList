@@ -1,9 +1,4 @@
-// When page is loaded Make a default API call
-// Retrieve a selection of plants including names and image and populate page dynamically
-// On click onto plant card bring up hidden card with additional information
-// Listen for form submit on the search bar and empty page and search API with value, populate page with corresponding plants
-// If search request can't be made show an error
-
+// Namespace Object
 const app = {};
 
 // Api Key & URL
@@ -70,14 +65,16 @@ app.createCards = (res) => {
       image = $('<div>').addClass('frontImageContainer').append($('<img>').attr('src', 'assets/errorImage.png').attr('alt', commonName));
     }
     
-    // Overlay Card Package
+    // Back Card Package
     const cardBack = $('<div>').addClass('backCard').append(nameBack, sciName, genus, family);
     
-    // Front Card Package with Overlay Package as a hidden child
+    // Front Card Package
     const card = $('<div>').addClass('frontCard').append(image, name);
 
+    // Card Container
     const cardContainer = $('<li>').addClass('cardContainer').attr('tabindex', '0').attr('role', 'tab').attr('aria-label', 'plant list').attr('aria-selected', 'true').append(card, cardBack);
     
+    // Append to the 'ul'
     $('.cards').append(cardContainer);
   });
     
@@ -96,14 +93,6 @@ app.toggleLoadingScreen = () => {
   $('.cards').addClass('hiddenOnLoad');
 }
 
-// Listen to click on the img to open new tab
-app.openNewTab = function() {
-  $('overlayContainer').on('click', 'img', function(event) {
-    event.preventDefault();
-    console.log('the clicky worked!')
-  })
-}
-
 // Form Submit Event to user input and pass to API call
 app.userSearch = () => {
   $('form').on('submit', function(event){
@@ -113,7 +102,6 @@ app.userSearch = () => {
     app.getSearch(userInput);
   })
 }
-
 
 // API call for search parameter
 app.getSearch = (name) => {
@@ -139,12 +127,11 @@ app.getSearch = (name) => {
 // Error message if search fails
 app.errorMessage = () => {
   if ($('.cards').children().length === 0) {
-    $('nav p').removeClass('errorToggle');
+    $('.searchError').removeClass('errorToggle');
   } else {
-    $('nav p').addClass('errorToggle');
+    $('.searchError').addClass('errorToggle');
   };
 }
-
 
 // Document Ready!
 $(document).ready(function(){
