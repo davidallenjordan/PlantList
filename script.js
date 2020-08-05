@@ -3,7 +3,7 @@ const app = {};
 
 // Api Key & URL
 const key = 'a4nM7Nfjw1m61m8Y4TcFuA5U3xt49YFj4KkbPkPMeeE';
-const apiUrl = 'https://trefle.io/api/v1/plants/';
+const apiUrl = 'http://trefle.io/api/v1/plants/';
 
 // Initialize App
 app.init = () => {
