@@ -35,7 +35,7 @@ app.getPlants = () => {
   })
 }
 
-// Notates through data to append onto the page 'ul'
+// Notates through data to append onto the page 'ul'.
 app.createCards = (res) => {
   $('.cards').empty().unbind();
 
