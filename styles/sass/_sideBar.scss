@@ -1,0 +1,74 @@
+.sideBar {
+  padding: 30px;
+  position: absolute;
+  z-index: 1;
+  right: -212px;
+
+  background: $white;
+  border: 3px solid $primary;
+
+  
+  li {
+    list-style: none;
+    font-size: 2rem;
+    border-top: 1px solid black;
+    padding: 5px 0 3px 10px;
+  }
+
+  a {
+    color: $primary;
+    font-size: 3rem;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: $secondary;
+    }
+
+  }
+}
+.clickTab {
+  transform: rotate(-90deg);
+  position: relative;
+}
+
+.openList {
+  position: absolute;
+  left: -65px;
+  top: -143px;
+}
+
+.closeList {
+  position: absolute;
+  transform: rotate(90deg);
+  top: 65px;
+  left: 65px;
+}
+
+
+.toggleSideBar {
+  right: 10px;
+  .openList {
+    display: none;
+  }
+  .closeList {
+    display: block;
+  }
+}
+
+h4 {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.addToListButton {
+  color: $primary;
+  font-size: 2.5rem;
+}
+
+.listOfPlants li {
+  text-transform: capitalize;
+}
+
+
+

@@ -59,6 +59,7 @@ app.createCards = (res) => {
     const genus = $('<p>').html(`<span>Genus:</span> ${arr.genus}`);
     const family = $('<p>').html(`<span>Family:</span> ${arr.family} '${arr.family_common_name}'`);
     const sciName = $('<p>').html(`<span>Scientific Name:</span> ${arr.scientific_name}`);
+    const addToListButton = $('<a>').html('Add To List').addClass('addToListButton').attr('value', commonName);
 
     // No image available error handling
     if (!arr.image_url) {
@@ -66,7 +67,7 @@ app.createCards = (res) => {
     }
     
     // Back Card Package
-    const cardBack = $('<div>').addClass('backCard').append(nameBack, sciName, genus, family);
+    const cardBack = $('<div>').addClass('backCard').append(nameBack, sciName, genus, family, addToListButton);
     
     // Front Card Package
     const card = $('<div>').addClass('frontCard').append(image, name);
@@ -80,6 +81,8 @@ app.createCards = (res) => {
     
   app.toggleLoadingScreen();   
   app.flipCardEvent();
+  app.addToList();
+  app.sideBarToggle();
 }
 
 // Brings up loader as images are rendering
@@ -146,6 +149,23 @@ app.errorMessage = () => {
   } else {
     $('.searchError').addClass('errorToggle');
   };
+}
+
+// Add-to-List Event Listener
+app.addToList = () => {
+  $('main').on('click', '.addToListButton', function () {
+    const commonName = $(this).val('');
+    $('.listOfPlants').append(`
+      <li>${commonName[0].attributes[1].value}</li>
+      `);
+  })
+}
+
+// Side Bar Toggle Listener 
+app.sideBarToggle = () => {
+  $('.sideBar a').on('click', function () {
+    $('.sideBar').toggleClass('toggleSideBar');
+  })
 }
 
 // Document Ready!

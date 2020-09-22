@@ -1,14 +1,18 @@
-// FIRST BREAK POINT - 4 GRIDS
+// Larger Screens
 @media (max-width: 1230px) {
   .cards {
     grid-template-columns: repeat(4, minmax(200px, 1fr));
   }
 }
 
-// SECOND BREAK POINT - 3 GRIDS
+// Smaller Screens
 @media (max-width: 1000px) {
   .cards {
     grid-template-columns: repeat(3, minmax(200px, 1fr));
+  }
+
+  .subTitle {
+    width: 100%;
   }
 
   footer {
@@ -18,14 +22,14 @@
   }
 }
 
-// THIRD BREAK POINT - 2 GRIDS
+// Small Screens / Tablets
 @media (max-width: 730px) {
   .cards {
     grid-template-columns: repeat(2, minmax(200px, 1fr));
   }
 }
 
-// Tablets / Small Screens
+// Small Screens / Tablets
 @media (max-width: 681px) {
   nav {
     padding: 20px;

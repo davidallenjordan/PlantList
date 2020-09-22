@@ -236,9 +236,18 @@ html {
 }
 
 h1 {
-  font-family: "Lobster Two", cursive;
-  color: #8cb66b;
   font-size: 6rem;
+}
+
+h1,
+.logoStyle {
+  font-family: "Lobster Two", cursive;
+}
+
+h1,
+.logoStyle,
+h4 {
+  color: #8cb66b;
 }
 
 .subTitle {
@@ -253,7 +262,10 @@ h2 {
 
 h2,
 h3,
+h4,
 p,
+.addToListButton,
+.clickTab,
 .names {
   font-family: "Roboto", sans-serif;
 }
@@ -359,6 +371,7 @@ h1 i {
 
 .subTitle {
   padding-left: 16px;
+  width: 80%;
 }
 
 .searchError {
@@ -631,6 +644,17 @@ img {
      object-fit: cover;
 }
 
+.addToListButton {
+  color: #000;
+  font-size: 2rem;
+  padding: 10px 0 0 0;
+  text-align: center;
+}
+
+.addToListButton:focus, .addToListButton:hover {
+  color: #63814c;
+}
+
 footer {
   margin-top: 50px;
   padding: 20px 0;
@@ -702,6 +726,78 @@ a {
   color: #0072b1;
 }
 
+.sideBar {
+  padding: 30px;
+  position: absolute;
+  z-index: 1;
+  right: -212px;
+  background: #FFF;
+  border: 3px solid #8cb66b;
+}
+
+.sideBar li {
+  list-style: none;
+  font-size: 2rem;
+  border-top: 1px solid black;
+  padding: 5px 0 3px 10px;
+}
+
+.sideBar a {
+  color: #8cb66b;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.sideBar a:hover, .sideBar a:focus {
+  color: #63814c;
+}
+
+.clickTab {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  position: relative;
+}
+
+.openList {
+  position: absolute;
+  left: -65px;
+  top: -143px;
+}
+
+.closeList {
+  position: absolute;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  top: 65px;
+  left: 65px;
+}
+
+.toggleSideBar {
+  right: 10px;
+}
+
+.toggleSideBar .openList {
+  display: none;
+}
+
+.toggleSideBar .closeList {
+  display: block;
+}
+
+h4 {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.addToListButton {
+  color: #8cb66b;
+  font-size: 2.5rem;
+}
+
+.listOfPlants li {
+  text-transform: capitalize;
+}
+
 @media (max-width: 1230px) {
   .cards {
     -ms-grid-columns: (minmax(200px, 1fr))[4];
@@ -713,6 +809,9 @@ a {
   .cards {
     -ms-grid-columns: (minmax(200px, 1fr))[3];
         grid-template-columns: repeat(3, minmax(200px, 1fr));
+  }
+  .subTitle {
+    width: 100%;
   }
   footer .names a {
     font-size: 2.3rem;
