@@ -41,10 +41,14 @@
 // Card 'li'
 .cardContainer {
   position: relative;
+  cursor: pointer;
   
   transform-style: preserve-3d;
   transition: transform 0.3s ease;
-  
+}
+
+// Click Event Toggle on .cardContainer 'li'
+.toggleFlip {
   &:focus {
     transform: rotateY(180deg);
   }

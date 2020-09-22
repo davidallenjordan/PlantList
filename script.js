@@ -79,6 +79,7 @@ app.createCards = (res) => {
   });
     
   app.toggleLoadingScreen();   
+  app.flipCardEvent();
 }
 
 // Brings up loader as images are rendering
@@ -91,6 +92,14 @@ app.toggleLoadingScreen = () => {
 
   $('.loader').addClass('loadingScreen');
   $('.cards').addClass('hiddenOnLoad');
+}
+
+// Event Handler - Flip Cards
+app.flipCardEvent = () => {
+  $('main').on('click', '.cardContainer', function () {
+    $(this).toggleClass('toggleFlip');
+  })
+
 }
 
 // Form Submit Event to user input and pass to API call

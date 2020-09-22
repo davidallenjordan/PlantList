@@ -3,6 +3,11 @@ nav {
 
   @include flex(0, space-between, center);
   flex-wrap: wrap;
+
+  a {
+    padding: 0;
+    margin: 0;
+  }
 }
 
 // Title / Subtitle
