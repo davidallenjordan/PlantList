@@ -333,6 +333,11 @@ nav {
       flex-wrap: wrap;
 }
 
+nav a {
+  padding: 0;
+  margin: 0;
+}
+
 h1 {
   padding: 0 0 10px 20px;
 }
@@ -515,6 +520,7 @@ form .searchButton:hover, form .searchButton:focus {
 
 .cardContainer {
   position: relative;
+  cursor: pointer;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
   -webkit-transition: -webkit-transform 0.3s ease;
@@ -523,7 +529,7 @@ form .searchButton:hover, form .searchButton:focus {
   transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 
-.cardContainer:focus {
+.toggleFlip:focus {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
