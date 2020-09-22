@@ -123,3 +123,17 @@ img {
   display: block;  
   object-fit: cover;
 }
+
+// Add to List Button
+.addToListButton {
+  color: $black;
+  font-size: 2rem;
+  padding: 10px 0 0 0;
+  text-align: center;
+
+  &:focus,
+  &:hover {
+    color: $secondary;
+  }
+
+}

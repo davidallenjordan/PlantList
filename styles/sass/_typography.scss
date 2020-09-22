@@ -1,7 +1,16 @@
 h1 {
-  font-family: $header;
-  color: $primary;
   font-size: 6rem;
+}
+
+h1,
+.logoStyle {
+  font-family: $header;
+}
+
+h1,
+.logoStyle,
+h4 {
+  color: $primary;
 }
 
 .subTitle {
@@ -16,7 +25,10 @@ h2 {
 
 h2,
 h3,
+h4,
 p,
+.addToListButton,
+.clickTab,
 .names {
   font-family: $base;
 }
