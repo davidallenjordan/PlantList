@@ -100,6 +100,12 @@ app.flipCardEvent = () => {
     $(this).toggleClass('toggleFlip');
   })
 
+  $('.cardContainer').keyup(function(event) {
+    if (event.keyCode === 13) {
+      $('.cardContainer').click();
+    }
+  })
+
 }
 
 // Form Submit Event to user input and pass to API call

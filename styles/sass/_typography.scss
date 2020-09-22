@@ -15,11 +15,16 @@ h2 {
 }
 
 h2,
+h3,
 p,
+.names {
+  font-family: $base;
+}
+
+h2,
 h3,
 .names {
   text-transform: capitalize;
-  font-family: $base;
 }
 
 h2,
